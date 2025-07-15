@@ -1,8 +1,4 @@
 Problemas por ahora
 
--Si te fijas en el traind_normalized1 algunos valores de
-vitaminaD se escapan del rango [-2,2] con valores
-muy elevados,creo que puede ser del formateo del archivo.
-Que hago las elimino o cambio el original.
+-Para el dataset Gallstone se han eliminado 6 filas por valores de vitamina D atipicos
 
--El primer paso de categoricos revisar las variables

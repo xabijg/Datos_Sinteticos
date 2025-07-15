@@ -2,14 +2,38 @@ import os
 import pandas as pd
 from sklearn.model_selection import StratifiedKFold
 
-# Crear carpeta de salida para los splits de validación cruzada
-os.makedirs("databases/splits/folds", exist_ok=True)
+input_train_filename = "train_DARWIN.csv"
 
-# Cargar el conjunto de entrenamiento (ya separado del holdout)
-df = pd.read_csv("databases/splits/train_gallstone.csv")
+possible_targets = ["Gallstone Status", "Class", "class", "Label"]
 
-# Definir variable target (cambia el nombre si es distinto)
-target_column = "Gallstone Status"  # ← Asegúrate de que este es el nombre correcto
+
+train_path = f"databases/splits/{input_train_filename}"
+df_train = pd.read_csv(train_path)
+#df_train = pd.read_csv(train_path,sep=";")
+# Buscar qué columna existe en df_train entre las posibles
+target_column = None
+for col in possible_targets:
+    if col in df_train.columns:
+        target_column = col
+        break
+
+# Rutas automáticas
+input_path = f"databases/splits/{input_train_filename}"
+basename = input_train_filename.replace("train_", "").replace(".csv", "")
+
+# Nueva ruta para folds dentro de una carpeta con el nombre base
+folds_output_dir = f"databases/splits/folds/{basename}"
+
+# Crear carpeta para los folds (incluyendo la subcarpeta con nombre base)
+os.makedirs(folds_output_dir, exist_ok=True)
+
+# Cargar el conjunto de entrenamiento
+df = pd.read_csv(input_path)
+#df = pd.read_csv(input_path,sep=";")
+
+# Verificar que la columna target exista
+if target_column not in df.columns:
+    raise ValueError(f"❌ La columna '{target_column}' no existe en el archivo {input_train_filename}")
 
 # Inicializar StratifiedKFold con 10 divisiones
 skf = StratifiedKFold(n_splits=10, shuffle=True, random_state=42)
@@ -19,10 +43,13 @@ for fold, (train_idx, val_idx) in enumerate(skf.split(df, df[target_column]), st
     df_train = df.iloc[train_idx].reset_index(drop=True)
     df_val = df.iloc[val_idx].reset_index(drop=True)
 
-    # Guardar los datasets para este fold
-    df_train.to_csv(f"databases/splits/folds/train_fold_{fold}.csv", index=False)
-    df_val.to_csv(f"databases/splits/folds/val_fold_{fold}.csv", index=False)
+    # Rutas de salida dentro de la carpeta del CSV base
+    train_fold_path = f"{folds_output_dir}/train_fold_{fold}_{basename}.csv"
+    val_fold_path = f"{folds_output_dir}/val_fold_{fold}_{basename}.csv"
+
+    df_train.to_csv(train_fold_path, index=False)
+    df_val.to_csv(val_fold_path, index=False)
 
     print(f"Fold {fold}: Train = {len(df_train)} muestras, Val = {len(df_val)} muestras")
 
-print("División en folds completada y guardada en databases/splits/folds/")
+print(f"\n División en folds completada y guardada en {folds_output_dir}/")

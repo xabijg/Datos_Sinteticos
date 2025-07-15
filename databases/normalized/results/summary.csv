@@ -1,0 +1,9 @@
+columna_target,valor,descripcion,cantidad
+Class,0.0,,1025
+Class,1.0,,506
+Gallstone Status,0.0,"Target variable, Gallstones present(1), and absent(0)",1385
+Gallstone Status,1.0,"Target variable, Gallstones present(1), and absent(0)",1428
+Label,0.0,,4059
+Label,1.0,,1308
+class,0.0,,785
+class,1.0,,779
