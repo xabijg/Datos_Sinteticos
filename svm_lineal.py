@@ -5,7 +5,7 @@ from sklearn.svm import LinearSVC
 from sklearn.preprocessing import StandardScaler
 
 # Ruta del archivo de entrada
-input_path = "databases/normalized/DARWIN/holdout/train_DARWIN_normalized.csv"
+input_path = "databases/normalized/gallstone/holdout/test_gallstone_normalized.csv"
 
 # Ruta de salida
 output_dir = "svmlineal"
@@ -20,19 +20,19 @@ output_path = os.path.join(output_dir, output_filename)
 df = pd.read_csv(input_path)
 
 # Separar variable objetivo
-y = df["class"]
+y = df["Gallstone Status"]
 
 # Eliminar columnas no numéricas o identificadores
-# Ejemplo: supongamos que hay una columna llamada 'id'
-X = df.drop(columns=["class"])
+X = df.drop(columns=["Gallstone Status","id"])
 X = X.select_dtypes(include=[np.number])  # mantiene solo columnas numéricas
 
 # Normalización
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
+#scaler = StandardScaler()
+#X_scaled = scaler.fit_transform(X)
+X_scaled = X
 
 # Entrenar modelo SVM lineal (L2)
-svm = LinearSVC(penalty='l2', dual=False, max_iter=10000)
+svm = LinearSVC(penalty='l2', dual=False, max_iter=50000)
 svm.fit(X_scaled, y)
 
 # Obtener coeficientes y calcular importancia

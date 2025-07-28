@@ -4,8 +4,10 @@ import os
 from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.preprocessing import StandardScaler
 
+from mutual import X_scaled
+
 # Ruta del archivo de entrada
-input_path = "databases/normalized/DARWIN/holdout/train_DARWIN_normalized.csv"
+input_path = "databases/normalized/gallstone/holdout/test_gallstone_normalized.csv"
 
 # Ruta de salida
 output_dir = "randomforest"
@@ -20,15 +22,16 @@ output_path = os.path.join(output_dir, output_filename)
 df = pd.read_csv(input_path)
 
 # Separar variable objetivo
-y = df["class"]
+y = df["Gallstone Status"]
 
 # Eliminar columnas no numéricas o identificadores
-X = df.drop(columns=["class"])
+X = df.drop(columns=["Gallstone Status","id"])
 X = X.select_dtypes(include=[np.number])  # solo columnas numéricas
 
 # Escalar datos (opcional para árboles, pero mantiene consistencia con otros métodos)
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
+# scaler = StandardScaler()
+# X_scaled = scaler.fit_transform(X)
+X_scaled = X
 
 # Modelo ExtraTreesClassifier (Random Forest) con muchos árboles y uso de todos los núcleos
 forest = ExtraTreesClassifier(n_estimators=10000, n_jobs=-1, random_state=42)

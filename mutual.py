@@ -5,7 +5,7 @@ from sklearn.feature_selection import mutual_info_classif
 from sklearn.preprocessing import StandardScaler
 
 # Ruta del archivo de entrada
-input_path = "databases/normalized/DARWIN/holdout/train_DARWIN_normalized.csv"
+input_path = "databases/normalized/gallstone/holdout/test_gallstone_normalized.csv"
 
 # Carpeta de salida
 output_dir = "mutualinfo"
@@ -18,15 +18,16 @@ output_path = os.path.join(output_dir, output_filename)
 
 # Cargar datos
 df = pd.read_csv(input_path)
-y = df["class"]
+y = df["Gallstone Status"]
 
 # Eliminar columnas no numéricas o identificadores
-X = df.drop(columns=["class"])
+X = df.drop(columns=["Gallstone Status","id"])
 X = X.select_dtypes(include=[np.number])
 
 # Escalar (por consistencia)
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
+# scaler = StandardScaler()
+# X_scaled = scaler.fit_transform(X)
+X_scaled = X
 
 # Calcular mutual information con k=3
 #mi = mutual_info_classif(X_scaled, y, n_neighbors=3, random_state=42)

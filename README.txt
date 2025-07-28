@@ -5,3 +5,5 @@ Al encontrarse valores por encima de los 4 decimales optamos por descartar los m
 
 -Para los dataset DARWIN Y TOXICITY se ha realizado un ordinary encoder para la variable target.
 
+-Preguntar Placido interpretacion valores,ver si estan bien los valores dados a als metricas,si aumentar bajar etc
+
