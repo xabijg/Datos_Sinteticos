@@ -1,0 +1,12 @@
+feature,mean_pos,median_pos,std_pos
+free sulfur dioxide,0.8,1.0,0.6000000000000001
+residual sugar,0.8,0.0,1.077032961426901
+pH,1.6,2.0,0.8
+citric acid,3.6,3.0,1.0198039027185568
+chlorides,4.0,4.0,1.0
+fixed acidity,4.2,4.0,0.6
+density,6.3,6.0,0.45825756949558405
+total sulfur dioxide,6.7,7.0,0.45825756949558405
+volatile acidity,8.3,8.0,0.45825756949558394
+sulphates,8.7,9.0,0.45825756949558394
+alcohol,10.0,10.0,0.0

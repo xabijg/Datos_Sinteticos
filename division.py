@@ -116,9 +116,14 @@ def scale_all(base_name):
     normalized_base_dir = f"databases/normalized/{base_name}"
     normalized_holdout_dir = f"{normalized_base_dir}/holdout"
     normalized_folds_dir = f"{normalized_base_dir}/folds"
+    normalized_folds_dir_train = f"{normalized_base_dir}/folds/train"
+    normalized_folds_dir_val = f"{normalized_base_dir}/folds/val"
+
 
     os.makedirs(normalized_holdout_dir, exist_ok=True)
     os.makedirs(normalized_folds_dir, exist_ok=True)
+    os.makedirs(normalized_folds_dir_train, exist_ok=True)
+    os.makedirs(normalized_folds_dir_val, exist_ok=True)
 
     train_path = f"databases/splits/train_{base_name}.csv"
     df_train = pd.read_csv(train_path)
@@ -145,8 +150,8 @@ def scale_all(base_name):
         df_train_fold_scaled, fold_scaler = fit_scale_df(df_train_fold)
         df_val_fold_scaled = transform_df(df_val_fold, fold_scaler)
 
-        df_train_fold_scaled.to_csv(f"{normalized_folds_dir}/train_fold_{fold}_{base_name}_normalized.csv", index=False)
-        df_val_fold_scaled.to_csv(f"{normalized_folds_dir}/val_fold_{fold}_{base_name}_normalized.csv", index=False)
+        df_train_fold_scaled.to_csv(f"{normalized_folds_dir}/train/train_fold_{fold}_{base_name}_normalized.csv", index=False)
+        df_val_fold_scaled.to_csv(f"{normalized_folds_dir}/val/val_fold_{fold}_{base_name}_normalized.csv", index=False)
 
         print(f"✅ Fold {fold} escalado y guardado.")
 
@@ -160,11 +165,16 @@ def run_for_dataset(base_name):
 
 
 if __name__ == "__main__":
+    # datasets = [
+    #     "gallstone",
+    #     "DARWIN",
+    #     "toxicity",
+    #     "DIA_trainingANDTESTset_RDKit_descriptors"
+    # ]
+
     datasets = [
-        "gallstone",
-        "DARWIN",
-        "toxicity",
-        "DIA_trainingANDTESTset_RDKit_descriptors"
+        "diabetes",
+        "winequality-red"
     ]
 
     for ds in datasets:

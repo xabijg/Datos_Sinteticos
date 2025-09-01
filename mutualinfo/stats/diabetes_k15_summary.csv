@@ -1,0 +1,9 @@
+feature,mean_pos,median_pos,std_pos
+BloodPressure,0.0,0.0,0.0
+SkinThickness,1.6,1.5,0.66332495807108
+DiabetesPedigreeFunction,1.6,2.0,0.48989794855663565
+Pregnancies,2.9,3.0,0.7000000000000001
+Insulin,4.1,4.0,0.7
+Age,5.4,5.5,0.66332495807108
+BMI,5.4,5.0,0.4898979485566356
+Glucose,7.0,7.0,0.0

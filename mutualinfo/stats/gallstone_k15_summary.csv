@@ -1,0 +1,39 @@
+feature,mean_pos,median_pos,std_pos
+Age,0.0,0.0,0.0
+Glomerular Filtration Rate (GFR),2.6,2.0,1.562049935181331
+Total Body Water (TBW),2.7,1.0,2.3685438564654024
+Alanin Aminotransferaz (ALT),4.2,3.0,3.0265491900843116
+Triglyceride,4.5,4.0,1.8027756377319946
+Body Mass Index (BMI),9.3,11.0,4.879549159502341
+Muscle Mass (MM),10.2,9.0,3.655133376499413
+Height,10.3,11.0,4.313930922024599
+Bone Mass (BM),10.9,8.0,5.838664230798
+Body Protein Content (Protein) (%),12.4,12.0,5.868560300448485
+Comorbidity,13.0,11.0,6.6932802122726045
+Gender,13.4,8.5,10.209799214480176
+Alkaline Phosphatase (ALP),14.2,15.5,6.539113089708726
+Hemoglobin (HGB),14.5,18.0,7.419568720619818
+Total Cholesterol (TC),14.7,15.0,5.550675634551167
+Weight,15.1,14.5,4.968903299521938
+Hypothyroidism,15.5,14.5,5.371219600798314
+Diabetes Mellitus (DM),16.8,15.0,5.878775382679628
+Lean Mass (LM) (%),17.5,18.5,6.375735251718032
+Extracellular Water (ECW),18.1,17.0,8.203048213926332
+Intracellular Water (ICW),18.6,21.5,8.175573374387879
+Coronary Artery Disease (CAD),18.8,18.0,7.95989949685296
+Visceral Muscle Area (VMA) (Kg),21.0,23.0,4.919349550499537
+Glucose,21.6,21.0,4.608687448721165
+Hyperlipidemia,21.8,25.5,9.846826900072937
+Aspartat Aminotransferaz (AST),23.0,22.0,5.639148871948674
+Total Body Fat Ratio (TBFR) (%),23.1,22.0,3.3896902513356584
+Visceral Fat Area (VFA),24.5,24.5,3.9560080889704965
+Obesity (%),25.3,26.5,4.648655719667784
+Low Density Lipoprotein (LDL),27.0,29.0,5.813776741499453
+Creatinine,28.0,28.5,3.6606010435446255
+Visceral Fat Rating (VFR),28.7,28.0,2.758622844826744
+High Density Lipoprotein (HDL),28.8,30.5,3.2802438933713454
+Total Fat Content (TFC),32.1,33.0,2.211334438749598
+Hepatic Fat Accumulation (HFA),34.4,34.5,0.9165151389911681
+Extracellular Fluid/Total Body Water (ECF/TBW),34.5,36.0,2.6551836094703507
+Vitamin D,34.9,35.0,0.8306623862918076
+C-Reactive Protein (CRP),37.0,37.0,0.0

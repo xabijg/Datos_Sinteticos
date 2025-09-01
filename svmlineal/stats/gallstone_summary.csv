@@ -1,11 +1,39 @@
-file,mean,median,std
-svmlineal_train_fold_5_gallstone_normalized.csv,0.3612835723391245,0.24821866121112557,0.3494597099755744
-svmlineal_train_fold_3_gallstone_normalized.csv,0.3583360050176064,0.2521945269495838,0.3460532343346556
-svmlineal_train_fold_10_gallstone_normalized.csv,0.32317196058168446,0.22225089543986637,0.3090906566214045
-svmlineal_train_fold_6_gallstone_normalized.csv,0.3232939439730874,0.18702283190191976,0.3332702891569197
-svmlineal_train_fold_8_gallstone_normalized.csv,0.3817722749619749,0.28265380223895853,0.36609773330242273
-svmlineal_train_fold_1_gallstone_normalized.csv,0.3412482981305958,0.28411785959015134,0.30922894633929243
-svmlineal_train_fold_4_gallstone_normalized.csv,0.3739559776706665,0.3260950103525613,0.32476448255278717
-svmlineal_train_fold_2_gallstone_normalized.csv,0.31780164989878373,0.2519022728499587,0.3231764217500319
-svmlineal_train_fold_7_gallstone_normalized.csv,0.3051128637958073,0.22998594902358174,0.3033972627974396
-svmlineal_train_fold_9_gallstone_normalized.csv,0.07063763087473454,0.04191670248306455,0.07966975983528367
+feature,mean_pos,median_pos,std_pos
+Hyperlipidemia,1.1,0.0,2.6627053911388696
+Bone Mass (BM),1.2,1.0,0.7483314773547882
+Intracellular Water (ICW),4.0,3.5,2.898275349237888
+Hypothyroidism,5.0,4.5,2.6457513110645907
+Gender,5.3,4.0,4.8999999999999995
+Diabetes Mellitus (DM),5.6,6.0,0.9165151389911679
+Total Body Fat Ratio (TBFR) (%),7.0,6.0,4.1952353926806065
+Coronary Artery Disease (CAD),8.2,7.5,3.944616584663204
+Vitamin D,9.1,9.0,3.7
+Muscle Mass (MM),11.4,11.0,4.862098312457287
+Height,11.5,10.0,4.177319714841085
+Extracellular Fluid/Total Body Water (ECF/TBW),11.9,13.0,4.657252408878008
+Total Fat Content (TFC),12.0,9.0,8.706319543871567
+Body Mass Index (BMI),16.5,15.5,6.407027391856539
+Hemoglobin (HGB),16.6,16.5,2.33238075793812
+Visceral Fat Rating (VFR),16.9,16.5,6.456779382943171
+Hepatic Fat Accumulation (HFA),17.0,18.5,5.5677643628300215
+Age,17.4,15.5,5.388877434122992
+Visceral Fat Area (VFA),17.6,16.0,7.241546796092669
+Extracellular Water (ECW),18.3,17.0,7.746612162745725
+Body Protein Content (Protein) (%),18.6,19.0,4.862098312457287
+Total Body Water (TBW),20.3,20.0,5.040833264451424
+High Density Lipoprotein (HDL),20.5,21.0,4.924428900898052
+Total Cholesterol (TC),22.2,22.5,3.059411708155671
+Lean Mass (LM) (%),22.3,20.5,6.466065264130885
+Aspartat Aminotransferaz (AST),25.2,25.5,7.05407683541936
+Comorbidity,25.3,26.0,3.5227829907617076
+Triglyceride,26.3,27.0,3.3778691508109073
+Weight,26.5,26.5,4.944694126030447
+Low Density Lipoprotein (LDL),27.0,26.0,2.449489742783178
+Alkaline Phosphatase (ALP),27.3,28.5,2.9681644159311658
+Visceral Muscle Area (VMA) (Kg),28.7,30.0,3.55105618091294
+Alanin Aminotransferaz (ALT),29.0,28.5,4.09878030638384
+Obesity (%),30.8,34.0,9.61041102138717
+Glucose,32.0,32.5,1.8439088914585775
+C-Reactive Protein (CRP),35.2,35.0,0.4
+Glomerular Filtration Rate (GFR),35.4,36.0,1.685229954635272
+Creatinine,36.8,37.0,0.4
