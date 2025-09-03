@@ -15,7 +15,7 @@ from sklearn.preprocessing import label_binarize
 # datasets = ["gallstone", "DARWIN", "toxicity", "DIA_trainingANDTESTset_RDKit_descriptors"]
 datasets = ["winequality-red"]
 # selectors = ["svmlineal", "randomforest", "mutualinfo"]
-selectors = ["mutualinfo"]
+selectors = ["svmlineal"]
 metrics = ["ACC", "AUC", "PREC", "RECALL", "F1SCORE", "SPEC", "MCC"]
 
 def compute_metrics(y_true, y_pred, y_proba=None):
@@ -49,7 +49,7 @@ def get_classifiers():
     classifiers["extratrees"] = ExtraTreesClassifier(n_estimators=500, n_jobs=-1, random_state=42)
     classifiers["gbforest"] = GradientBoostingClassifier(n_estimators=500, random_state=42)
     classifiers["ldc"] = LinearDiscriminantAnalysis()
-    #classifiers["qdc"] = QuadraticDiscriminantAnalysis()
+    classifiers["qdc"] = QuadraticDiscriminantAnalysis()
 
     return classifiers
 
