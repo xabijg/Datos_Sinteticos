@@ -24,7 +24,6 @@ def svm_lineal_feature_ranking(dataset_name):
             output_path = os.path.join(output_dir, output_filename)
 
             df = pd.read_csv(input_path)
-            # Cambiar nombre de la columna objetivo si varía según dataset
             target_col = next((col for col in ["Gallstone Status", "Class", "class", "Label"] if col in df.columns), None)
             if target_col is None:
                 print(f" No se encontró columna objetivo para {dataset_name} en {filename}")
@@ -46,7 +45,7 @@ def svm_lineal_feature_ranking(dataset_name):
             }).sort_values(by="importance", ascending=False)
 
             ranking.to_csv(output_path, index=False)
-            print(f"✅ Ranking SVM guardado en: {output_path}")
+            print(f" Ranking SVM guardado en: {output_path}")
 
 def random_forest_feature_ranking(dataset_name):
     print(f"\n Iniciando ranking con Random Forest (ExtraTrees) para {dataset_name}...")
@@ -82,7 +81,7 @@ def random_forest_feature_ranking(dataset_name):
             }).sort_values(by="importance", ascending=False)
 
             ranking.to_csv(output_path, index=False)
-            print(f"✅ Ranking RF guardado en: {output_path}")
+            print(f" Ranking RF guardado en: {output_path}")
 
 def mutual_info_feature_ranking(dataset_name):
     print(f"\n Iniciando ranking con Mutual Information para {dataset_name}...")
@@ -126,7 +125,7 @@ def mutual_info_feature_ranking(dataset_name):
                 output_path = os.path.join(k_output_dir, output_filename)
 
                 ranking.to_csv(output_path, index=False)
-                print(f"✅ Ranking MutualInfo (k={k}) guardado en: {output_path}")
+                print(f" Ranking MutualInfo (k={k}) guardado en: {output_path}")
 
 def resumir_ranking_selector(selector_folder, score_column="importance"):
     print(f"\n Calculando estadísticas para selector: {selector_folder}")

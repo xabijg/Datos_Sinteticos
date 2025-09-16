@@ -11,11 +11,12 @@ from sklearn.metrics import (
     accuracy_score, f1_score, precision_score, recall_score, roc_auc_score, matthews_corrcoef, confusion_matrix
 )
 from sklearn.preprocessing import label_binarize
+from sklearn.utils.class_weight import compute_sample_weight
 
 # datasets = ["gallstone", "DARWIN", "toxicity", "DIA_trainingANDTESTset_RDKit_descriptors"]
-datasets = ["winequality-red"]
+datasets = ["diabetes"]
 # selectors = ["svmlineal", "randomforest", "mutualinfo"]
-selectors = ["svmlineal"]
+selectors = ["mutualinfo"]
 metrics = ["ACC", "AUC", "PREC", "RECALL", "F1SCORE", "SPEC", "MCC"]
 
 def compute_metrics(y_true, y_pred, y_proba=None):
@@ -28,7 +29,7 @@ def compute_metrics(y_true, y_pred, y_proba=None):
     tn, fp, fn, tp = confusion_matrix(y_true, y_pred).ravel()
     spec = tn / (tn + fp) if (tn + fp) > 0 else 0.0
 
-    auc = roc_auc_score(y_true, y_proba)
+    auc = roc_auc_score(y_true, y_proba) if y_proba is not None else None
     return {
         "ACC": acc, "AUC": auc, "PREC": prec,
         "RECALL": recall, "F1SCORE": f1, "SPEC": spec, "MCC": mcc
@@ -61,7 +62,7 @@ for dataset in datasets:
         selector_path = os.path.join(selector, dataset)
         print(f"  Ruta del selector: {selector_path}")
 
-        # JSON para almacenar resultados de este dataset+selector
+        # JSON
         data_json = {
             "DATASET_NAME": dataset,
             "SELECTOR": selector,
@@ -158,7 +159,31 @@ for dataset in datasets:
                     X_test = X_test_all[selected_features]
 
                     try:
-                        clf.fit(X_train, y_train)
+                        # pesos balanceados
+                        print("Pesos originales (clases y su cuenta):")
+                        unique, counts = np.unique(y_train, return_counts=True)
+                        for cls, cnt in zip(unique, counts):
+                            print(f"  Clase {cls}: {cnt} muestras")
+
+                        sample_weights = compute_sample_weight(class_weight='balanced', y=y_train)
+
+                        # Mostrar pesos balanceados por clase
+                        unique_classes = np.unique(y_train)
+                        class_weights_dict = {
+                            cls: (len(y_train) / (len(unique_classes) * count))
+                            for cls, count in zip(unique_classes, counts)
+                        }
+
+                        print("Pesos balanceados asignados a cada clase:")
+                        for cls in sorted(class_weights_dict):
+                            print(f"  Clase {cls}: peso {class_weights_dict[cls]:.4f}")
+
+                        # sample_weight solo si el clasificador lo soporta
+                        fit_params = {}
+                        if 'sample_weight' in clf.fit.__code__.co_varnames:
+                            fit_params['sample_weight'] = sample_weights
+
+                        clf.fit(X_train, y_train, **fit_params)
 
                         y_train_pred = clf.predict(X_train)
                         y_test_pred = clf.predict(X_test)
@@ -171,6 +196,7 @@ for dataset in datasets:
 
                         split_data["DATA"].append({
                             "N_FEAT": n,
+                            "NAME_FEAT": selected_features.tolist(),
                             "DATA": {
                                 "TRAIN": metrics_train,
                                 "VAL": metrics_val
