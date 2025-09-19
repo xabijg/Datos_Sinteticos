@@ -3,7 +3,7 @@ import numpy as np
 import os
 from sklearn.svm import LinearSVC
 
-datasets = ["winequality-red"]  # Agrega más si lo deseas
+datasets = ["DIA_trainingANDTESTset_RDKit_descriptors"]
 
 C_values = [0.01, 0.1, 1.0, 10.0, 100.0]
 
