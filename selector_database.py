@@ -7,8 +7,7 @@ from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.feature_selection import mutual_info_classif
 from collections import defaultdict
 
-#datasets = ["gallstone", "DARWIN", "toxicity", "DIA_trainingANDTESTset_RDKit_descriptors"]
-datasets = ["winequality-red"]
+datasets = ["virus","bacterias","hongos"]
 selectors = ["svmlineal", "randomforest", "mutualinfo"]
 
 def svm_lineal_feature_ranking(dataset_name):
@@ -24,7 +23,7 @@ def svm_lineal_feature_ranking(dataset_name):
             output_path = os.path.join(output_dir, output_filename)
 
             df = pd.read_csv(input_path)
-            target_col = next((col for col in ["Gallstone Status", "Class", "class", "Label"] if col in df.columns), None)
+            target_col = next((col for col in ["HONG","VIRUS","BACT"] if col in df.columns), None)
             if target_col is None:
                 print(f" No se encontró columna objetivo para {dataset_name} en {filename}")
                 continue
@@ -60,7 +59,7 @@ def random_forest_feature_ranking(dataset_name):
             output_path = os.path.join(output_dir, output_filename)
 
             df = pd.read_csv(input_path)
-            target_col = next((col for col in ["Gallstone Status", "Class", "class", "Label"] if col in df.columns), None)
+            target_col = next((col for col in ["HONG","VIRUS","BACT"] if col in df.columns), None)
             if target_col is None:
                 print(f" No se encontró columna objetivo para {dataset_name} en {filename}")
                 continue
@@ -96,7 +95,7 @@ def mutual_info_feature_ranking(dataset_name):
             input_path = os.path.join(input_dir, filename)
 
             df = pd.read_csv(input_path)
-            target_col = next((col for col in ["Gallstone Status", "Class", "class", "Label"] if col in df.columns), None)
+            target_col = next((col for col in ["HONG","VIRUS","BACT"] if col in df.columns), None)
             if target_col is None:
                 print(f" No se encontró columna objetivo para {dataset_name} en {filename}")
                 continue
@@ -171,7 +170,6 @@ def resumir_ranking_selector(selector_folder, score_column="importance"):
                     print(f" No se encontraron datos válidos en: {k_path}")
 
         else:
-            # Para SVM y RF, un único summary por dataset
             all_stats = []
             for filename in os.listdir(dataset_path):
                 if not filename.endswith(".csv"):
@@ -230,8 +228,7 @@ def calcular_resumen_posiciones():
     base_path = "/home/reibax/PycharmProjects/Datos_Sinteticos"
 
     selectors = ["svmlineal", "randomforest", "mutualinfo"]
-    #datasets = ["gallstone", "DARWIN", "toxicity", "DIA_trainingANDTESTset_RDKit_descriptors"]
-    datasets = ["diabetes", "winequality-red"]
+    datasets = ["hongos", "bacterias","virus"]
 
     for selector in selectors:
         for dataset in datasets:
@@ -331,9 +328,9 @@ if __name__ == "__main__":
     calcular_resumen_posiciones()
 
     # Calcular estadísticas para cada selector y dataset
-    # resumir_ranking_selector("svmlineal", score_column="importance")
-    # resumir_ranking_selector("randomforest", score_column="importance")
-    # resumir_ranking_selector("mutualinfo", score_column="relevance_score")
+    resumir_ranking_selector("svmlineal", score_column="importance")
+    resumir_ranking_selector("randomforest", score_column="importance")
+    resumir_ranking_selector("mutualinfo", score_column="relevance_score")
     #
     # graficar_boxplots_summary("svmlineal")
     # graficar_boxplots_summary("randomforest")

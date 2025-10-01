@@ -13,10 +13,8 @@ from sklearn.metrics import (
 from sklearn.preprocessing import label_binarize
 from sklearn.utils.class_weight import compute_sample_weight
 
-# datasets = ["gallstone", "DARWIN", "toxicity", "DIA_trainingANDTESTset_RDKit_descriptors"]
-datasets = ["diabetes"]
-# selectors = ["svmlineal", "randomforest", "mutualinfo"]
-selectors = ["mutualinfo"]
+datasets = ["virus"]
+selectors = ["randomforest"]
 metrics = ["ACC", "AUC", "PREC", "RECALL", "F1SCORE", "SPEC", "MCC"]
 
 def compute_metrics(y_true, y_pred, y_proba=None):
@@ -37,22 +35,35 @@ def compute_metrics(y_true, y_pred, y_proba=None):
 
 def get_classifiers():
     classifiers = {
-         "svm_linear": SVC(kernel="linear", probability=True),
-         "svm_rbf": SVC(kernel="rbf", probability=True),
-         "svm_poly2": SVC(kernel="poly", degree=2, probability=True),
-         "svm_poly3": SVC(kernel="poly", degree=3, probability=True),
-         "svm_sigmoid": SVC(kernel="sigmoid", probability=True),
+         "svm_linear": lambda: SVC(kernel="linear", probability=True),
+
+         # Clasificadores costosos
+         "svm_rbf": lambda: SVC(kernel="rbf", probability=True),
+         "svm_poly2": lambda: SVC(kernel="poly", degree=2, probability=True),
+         "svm_poly3": lambda: SVC(kernel="poly", degree=3, probability=True),
+         "svm_sigmoid": lambda: SVC(kernel="sigmoid", probability=True),
     }
 
     for k in [3, 7, 11, 15, 19]:
-          classifiers[f"knn_k{k}"] = KNeighborsClassifier(n_neighbors=k, weights="distance")
+        classifiers[f"knn_k{k}"] = lambda k=k: KNeighborsClassifier(n_neighbors=k, weights="distance")
 
-    classifiers["extratrees"] = ExtraTreesClassifier(n_estimators=500, n_jobs=-1, random_state=42)
-    classifiers["gbforest"] = GradientBoostingClassifier(n_estimators=500, random_state=42)
-    classifiers["ldc"] = LinearDiscriminantAnalysis()
-    classifiers["qdc"] = QuadraticDiscriminantAnalysis()
+    classifiers["extratrees"] = lambda: ExtraTreesClassifier(n_estimators=500, n_jobs=-1, random_state=42)
+    classifiers["gbforest"] = lambda: GradientBoostingClassifier(n_estimators=500, random_state=42)
+    classifiers["ldc"] = lambda: LinearDiscriminantAnalysis()
+    classifiers["qdc"] = lambda: QuadraticDiscriminantAnalysis()
 
     return classifiers
+
+# (máximo número de features a probar)
+FEATURE_LIMITS = {
+    "svm_rbf": 50,
+    "svm_poly2": 50,
+    "svm_poly3": 50,
+    "svm_sigmoid": 50,
+    "gbforest": 100,
+}
+
+SAVE_INTERVAL = 10  # Guardar resultados parciales cada 10 features
 
 for dataset in datasets:
     print(f"\nProcesando dataset: {dataset}")
@@ -62,14 +73,12 @@ for dataset in datasets:
         selector_path = os.path.join(selector, dataset)
         print(f"  Ruta del selector: {selector_path}")
 
-        # JSON
         data_json = {
             "DATASET_NAME": dataset,
             "SELECTOR": selector,
             "DATA": []
         }
 
-        # Obtener lista de archivos según el selector
         if selector == "mutualinfo":
             print("  Buscando archivos en subcarpetas...")
             split_files = []
@@ -90,9 +99,12 @@ for dataset in datasets:
         for f in split_files:
             print(f"   - {f}")
 
-        for clf_name, clf in get_classifiers().items():
+        classifiers = get_classifiers()
+        for clf_name, clf_constructor in classifiers.items():
             print(f"  Clasificador: {clf_name}")
             clf_data = {"CLASSF_NAME": clf_name, "FOLDS": []}
+
+            max_feats = FEATURE_LIMITS.get(clf_name, None)
 
             for split_path in split_files:
                 split_file = os.path.basename(split_path)
@@ -136,49 +148,37 @@ for dataset in datasets:
                     print(f"    Archivo no encontrado: {e}")
                     continue
 
-                target_col = next((col for col in ["Gallstone Status", "Class", "class", "Label"] if col in df_train.columns), None)
+                target_col = next((col for col in ["HONG", "BACT", "VIRUS"] if col in df_train.columns), None)
                 if not target_col:
                     print(f"    No se encontró columna objetivo en {train_path}")
                     continue
                 print(f"    Columna objetivo detectada: {target_col}")
 
-                # Separamos la variable objetivo (target) del dataframe de entrenamiento y prueba
                 y_train = df_train[target_col]
                 y_test = df_test[target_col]
 
-                # Preparamos las variables independientes (features)
                 X_train_all = df_train.drop(columns=[target_col, "id"], errors='ignore').select_dtypes(include=[np.number])
                 X_test_all = df_test.drop(columns=[target_col, "id"], errors='ignore').select_dtypes(include=[np.number])
 
                 split_data = {"SPLIT_ID": split_id, "DATA": []}
 
                 for n in range(1, len(ranking_df) + 1):
+                    if max_feats is not None and n > max_feats:
+                        print(f"    Límite de features alcanzado para {clf_name}: {max_feats}")
+                        break
+
                     selected_features = ranking_df["feature"].iloc[:n].values
 
-                    X_train = X_train_all[selected_features]
-                    X_test = X_test_all[selected_features]
-
                     try:
-                        # pesos balanceados
-                        print("Pesos originales (clases y su cuenta):")
-                        unique, counts = np.unique(y_train, return_counts=True)
-                        for cls, cnt in zip(unique, counts):
-                            print(f"  Clase {cls}: {cnt} muestras")
+                        X_train = X_train_all[selected_features]
+                        X_test = X_test_all[selected_features]
 
+                        # Pesos balanceados
+                        unique, counts = np.unique(y_train, return_counts=True)
                         sample_weights = compute_sample_weight(class_weight='balanced', y=y_train)
 
-                        # Mostrar pesos balanceados por clase
-                        unique_classes = np.unique(y_train)
-                        class_weights_dict = {
-                            cls: (len(y_train) / (len(unique_classes) * count))
-                            for cls, count in zip(unique_classes, counts)
-                        }
+                        clf = clf_constructor()  # <-- Nueva instancia por fold
 
-                        print("Pesos balanceados asignados a cada clase:")
-                        for cls in sorted(class_weights_dict):
-                            print(f"  Clase {cls}: peso {class_weights_dict[cls]:.4f}")
-
-                        # sample_weight solo si el clasificador lo soporta
                         fit_params = {}
                         if 'sample_weight' in clf.fit.__code__.co_varnames:
                             fit_params['sample_weight'] = sample_weights
@@ -202,8 +202,18 @@ for dataset in datasets:
                                 "VAL": metrics_val
                             }
                         })
-                        if n % 10 == 0 or n == len(ranking_df):
-                            print(f"    Progreso: {n}/{len(ranking_df)} features evaluadas.")
+
+                        # Guardado parcial cada SAVE_INTERVAL o al final
+                        if n % SAVE_INTERVAL == 0 or n == len(ranking_df) or (max_feats and n == max_feats):
+                            print(f"    Guardando progreso parcial en feature {n}...")
+                            os.makedirs("classification_results", exist_ok=True)
+                            temp_output = f"classification_results/tmp_{dataset}_{selector}_{clf_name}_split{split_id}.json"
+                            with open(temp_output, "w") as f:
+                                json.dump({
+                                    "CLASSF_NAME": clf_name,
+                                    "SPLIT_ID": split_id,
+                                    "DATA": split_data
+                                }, f, indent=4)
 
                     except Exception as e:
                         print(f"    Error con clasificador {clf_name} en fold {split_id}, n_feats={n}: {e}")

@@ -3,16 +3,16 @@ import numpy as np
 import os
 from sklearn.svm import LinearSVC
 
-datasets = ["DIA_trainingANDTESTset_RDKit_descriptors"]
+datasets = ["hongos","bacterias","virus"]
 
 C_values = [0.01, 0.1, 1.0, 10.0, 100.0]
 
 BASE_OUTPUT_DIR = "svmlineal_c_variation"
 
-POSSIBLE_TARGET_COLS = ["Gallstone Status", "Class", "class", "Label"]
+POSSIBLE_TARGET_COLS = ["Gallstone Status", "Class", "class", "Label","HONG","VIRUS","BACT"]
 
 def run_svm_ranking_with_C_variation(dataset_name):
-    print(f"\n🔍 Procesando dataset: {dataset_name}")
+    print(f"\nProcesando dataset: {dataset_name}")
     input_dir = f"databases/normalized/{dataset_name}/folds/train"
 
     for filename in os.listdir(input_dir):
@@ -33,7 +33,7 @@ def run_svm_ranking_with_C_variation(dataset_name):
         X = X.select_dtypes(include=[np.number])  # Solo variables numéricas
 
         for C_val in C_values:
-            print(f"   🛠️  Entrenando SVM Lineal con C={C_val}")
+            print(f"  Entrenando SVM Lineal con C={C_val}")
             try:
                 svm = LinearSVC(penalty='l2', dual=False, C=C_val, max_iter=50000)
                 svm.fit(X, y)

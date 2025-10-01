@@ -12,10 +12,10 @@ def encode_with_ordinal(input_filename):
     # Definir columnas categóricas y orden específico según dataset
     if input_filename.lower() == "darwin.csv":
         categorical_cols = ['class']
-        categories = [['H', 'P']]  # ejemplo orden para DARWIN
+        categories = [['H', 'P']]
     elif input_filename.lower() == "toxicity.csv":
         categorical_cols = ['Class']
-        categories = [['NonToxic', 'Toxic']]  # ejemplo orden para toxicity
+        categories = [['NonToxic', 'Toxic']]
     else:
         raise ValueError("Dataset no válido")
 
@@ -29,7 +29,7 @@ def encode_with_ordinal(input_filename):
 
     os.makedirs("databases/processed", exist_ok=True)
     df.to_csv(output_path, index=False)
-    print(f"\n✅ Archivo guardado en: {output_path}")
+    print(f"\n Archivo guardado en: {output_path}")
 
 def encode_with_onehot(input_filename):
     input_path = f"databases/original/{input_filename}"
@@ -38,8 +38,8 @@ def encode_with_onehot(input_filename):
 
     df = pd.read_csv(input_path)
 
-    # Aquí defines las columnas categóricas para OneHotEncoder (ajusta según dataset)
-    categorical_cols = ['Class']  # ejemplo
+
+    categorical_cols = ['Class']
 
     print(f"Columnas categóricas a codificar con OneHot en {input_filename}:", categorical_cols)
 
@@ -60,7 +60,7 @@ def encode_with_onehot(input_filename):
 
     os.makedirs("databases/processed", exist_ok=True)
     df_final.to_csv(output_path, index=False)
-    print(f"\n✅ Archivo guardado en: {output_path}")
+    print(f"\n Archivo guardado en: {output_path}")
 
 
 def wine(input_filename):
@@ -97,7 +97,7 @@ def main(input_filename):
         encode_with_onehot(input_filename)
 
 
-# Ejemplo de uso:
+
 if __name__ == "__main__":
     # main("toxicity.csv")
     main("winequality-red.csv")

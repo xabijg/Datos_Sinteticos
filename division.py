@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split, StratifiedKFold
 from sklearn.preprocessing import RobustScaler
 
-possible_targets = ["Gallstone Status", "Class", "class", "Label"]
+possible_targets = ["HONG","BACT","VIRUS"]
 
 def split_holdout(base_name):
     print(f"\n Split Holdout - Dataset: {base_name}")
@@ -18,7 +18,7 @@ def split_holdout(base_name):
 
     df = pd.read_csv(input_path)
 
-    if 'id'and base_name!="DARWIN" not in df.columns:
+    if 'id' not in df.columns and base_name != "DARWIN":
         df.insert(0, 'id', range(1, len(df) + 1))
 
     df.rename(columns={'ID': 'id'}, inplace=True)
@@ -32,7 +32,7 @@ def split_holdout(base_name):
     train_df.to_csv(output_train_path, index=False)
     test_df.to_csv(output_test_path, index=False)
 
-    print(f"✅ Conjuntos guardados en:")
+    print(f" Conjuntos guardados en:")
     print(f"   - {output_train_path}")
     print(f"   - {output_test_path}")
 
@@ -52,7 +52,7 @@ def cross_validation(base_name):
             break
 
     if target_column is None:
-        raise ValueError(f"❌ Ninguna de las columnas objetivo posibles se encontró en {input_train_filename}")
+        raise ValueError(f" Ninguna de las columnas objetivo posibles se encontró en {input_train_filename}")
 
     basename = input_train_filename.replace("train_", "").replace(".csv", "")
     folds_output_dir = f"databases/splits/folds/{basename}"
@@ -62,7 +62,7 @@ def cross_validation(base_name):
     df = pd.read_csv(train_path)
 
     if target_column not in df.columns:
-        raise ValueError(f"❌ La columna '{target_column}' no existe en el archivo {input_train_filename}")
+        raise ValueError(f" La columna '{target_column}' no existe en el archivo {input_train_filename}")
 
     skf = StratifiedKFold(n_splits=10, shuffle=True, random_state=42)
 
@@ -78,7 +78,7 @@ def cross_validation(base_name):
 
         print(f"Fold {fold}: Train = {len(df_train_fold)} muestras, Val = {len(df_val_fold)} muestras")
 
-    print(f"\n✅ División en folds completada y guardada en {folds_output_dir}/")
+    print(f"\n División en folds completada y guardada en {folds_output_dir}/")
 
 
 def fit_scale_df(df):
@@ -88,23 +88,28 @@ def fit_scale_df(df):
     cols_to_exclude = [col for col in df_no_id.columns if col in possible_targets]
     cols_to_scale = df_no_id.drop(columns=cols_to_exclude)
 
+
+
     scaler = RobustScaler()
     scaled_array = scaler.fit_transform(cols_to_scale)
     df_scaled = pd.DataFrame(scaled_array, columns=cols_to_scale.columns, index=df.index)
 
     df_final = pd.concat([ids, df_scaled, df_no_id[cols_to_exclude]], axis=1)
-    return df_final, scaler
 
 
-def transform_df(df, scaler):
+    return df_final, scaler, list(cols_to_scale.columns)
+
+
+def transform_df(df, scaler, cols_to_scale):
     ids = df['id']
     df_no_id = df.drop(columns=['id'])
 
-    cols_to_exclude = [col for col in df_no_id.columns if col in possible_targets]
-    cols_to_scale = df_no_id.drop(columns=cols_to_exclude)
+    df_to_scale = df_no_id[cols_to_scale]
 
-    scaled_array = scaler.transform(cols_to_scale)
-    df_scaled = pd.DataFrame(scaled_array, columns=cols_to_scale.columns, index=df.index)
+    scaled_array = scaler.transform(df_to_scale)
+    df_scaled = pd.DataFrame(scaled_array, columns=cols_to_scale, index=df.index)
+
+    cols_to_exclude = [col for col in df_no_id.columns if col in possible_targets]
 
     df_final = pd.concat([ids, df_scaled, df_no_id[cols_to_exclude]], axis=1)
     return df_final
@@ -119,7 +124,6 @@ def scale_all(base_name):
     normalized_folds_dir_train = f"{normalized_base_dir}/folds/train"
     normalized_folds_dir_val = f"{normalized_base_dir}/folds/val"
 
-
     os.makedirs(normalized_holdout_dir, exist_ok=True)
     os.makedirs(normalized_folds_dir, exist_ok=True)
     os.makedirs(normalized_folds_dir_train, exist_ok=True)
@@ -127,17 +131,17 @@ def scale_all(base_name):
 
     train_path = f"databases/splits/train_{base_name}.csv"
     df_train = pd.read_csv(train_path)
-    df_train_scaled, global_scaler = fit_scale_df(df_train)
+    df_train_scaled, global_scaler, cols_to_scale = fit_scale_df(df_train)
     df_train_scaled.to_csv(f"{normalized_holdout_dir}/train_{base_name}_normalized.csv", index=False)
 
-    print(f"✅ Train escalado guardado en:\n   {normalized_holdout_dir}/")
+    print(f" Train escalado guardado en:\n   {normalized_holdout_dir}/")
 
     test_path = f"databases/splits/test_{base_name}.csv"
     df_test = pd.read_csv(test_path)
-    df_test_scaled = transform_df(df_test, global_scaler)
+    df_test_scaled = transform_df(df_test, global_scaler, cols_to_scale)
     df_test_scaled.to_csv(f"{normalized_holdout_dir}/test_{base_name}_normalized.csv", index=False)
 
-    print(f"✅ Holdout escalado guardado en:\n   {normalized_holdout_dir}/")
+    print(f" Holdout escalado guardado en:\n   {normalized_holdout_dir}/")
 
     folds_dir = f"databases/splits/folds/{base_name}"
     for fold in range(1, 11):
@@ -147,13 +151,13 @@ def scale_all(base_name):
         df_train_fold = pd.read_csv(train_fold_path)
         df_val_fold = pd.read_csv(val_fold_path)
 
-        df_train_fold_scaled, fold_scaler = fit_scale_df(df_train_fold)
-        df_val_fold_scaled = transform_df(df_val_fold, fold_scaler)
+        df_train_fold_scaled, fold_scaler, cols_to_scale_fold = fit_scale_df(df_train_fold)
+        df_val_fold_scaled = transform_df(df_val_fold, fold_scaler, cols_to_scale_fold)
 
         df_train_fold_scaled.to_csv(f"{normalized_folds_dir}/train/train_fold_{fold}_{base_name}_normalized.csv", index=False)
         df_val_fold_scaled.to_csv(f"{normalized_folds_dir}/val/val_fold_{fold}_{base_name}_normalized.csv", index=False)
 
-        print(f"✅ Fold {fold} escalado y guardado.")
+        print(f" Fold {fold} escalado y guardado.")
 
     print("\n Estandarización completa.")
 
@@ -165,16 +169,12 @@ def run_for_dataset(base_name):
 
 
 if __name__ == "__main__":
-    # datasets = [
-    #     "gallstone",
-    #     "DARWIN",
-    #     "toxicity",
-    #     "DIA_trainingANDTESTset_RDKit_descriptors"
-    # ]
+
 
     datasets = [
-        "diabetes",
-        "winequality-red"
+        "hongos",
+        "bacterias",
+        "virus"
     ]
 
     for ds in datasets:

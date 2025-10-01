@@ -6,9 +6,9 @@ folder_path = "databases/normalized"
 results_folder = os.path.join(folder_path, "results")
 os.makedirs(results_folder, exist_ok=True)  # Crear carpeta results si no existe
 
-possible_targets = ["Gallstone Status", "Class", "class", "Label"]
+possible_targets = ["Gallstone Status", "Class", "class", "Label","HONG","BACT","VIRUS"]
 
-# Descripción para la columna Gallstone Status
+
 descriptions = {
     "Gallstone Status": "Target variable, Gallstones present(1), and absent(0)"
 }
@@ -48,7 +48,7 @@ def main():
                 counts = count_targets_in_file(filepath)
                 all_counts.extend(counts)
 
-    # Guardar resultados por archivo
+    # Guardar resultados
     with open(results_path, mode='w', newline='', encoding='utf-8') as csvfile:
         fieldnames = ["archivo", "columna_target", "valor", "cantidad", "descripcion"]
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -58,7 +58,7 @@ def main():
 
     print(f"Resultados guardados en: {results_path}")
 
-    # Ahora sumatorios totales por columna target y valor, agregando la descripción para Gallstone Status
+    # Ahora sumatorios totales por columna target y valor
     df_all = pd.DataFrame(all_counts)
     if df_all.empty:
         print("No se encontraron datos para resumir.")
@@ -68,7 +68,7 @@ def main():
     summary = df_all.groupby(["columna_target", "valor", "descripcion"])["cantidad"].sum().reset_index()
     print(summary.to_string(index=False))
 
-    # Opcional: guardar resumen en otro archivo CSV
+
     summary_path = os.path.join(results_folder, "summary.csv")
     summary.to_csv(summary_path, index=False)
     print(f"Resumen guardado en: {summary_path}")

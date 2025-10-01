@@ -1,0 +1,646 @@
+feature,importance,C_value
+HONG.1,1.7766167904896262,10.0
+TNMIV,0.223265069508,10.0
+Adenoescamoso,0.1907503435817076,10.0
+TNMCOD,0.17955227674571897,10.0
+Linfocitos_sum,0.1724702123472722,10.0
+GGT_kurtosis,0.15545988262700738,10.0
+GGT_median,0.14078304493931507,10.0
+Linfocitos_median,0.1361311101124751,10.0
+Linfocitos_min,0.13439404417086018,10.0
+Radioterapia,0.1250240764418435,10.0
+Hemoglobina_initial,0.11824517284264172,10.0
+Sodio_median,0.10483847024769842,10.0
+Bilirrubina total_median,0.09936181771395539,10.0
+GGT_min,0.09865021854886709,10.0
+Vinorelbina,0.09807559949996586,10.0
+Sodio_min,0.09677286045040158,10.0
+TTPa (s)_kurtosis,0.09651059960951722,10.0
+Fosfatasa Alcalina_kurtosis,0.09573565017968994,10.0
+QTprevia,0.09427208641646766,10.0
+Plaquetas_median,0.09124180352511159,10.0
+Nivolumab,0.0908999870537185,10.0
+Linfocitos_initial,0.0908891282651215,10.0
+Hemoglobina_std,0.08994996626925855,10.0
+Linea1Cisplatino,0.08955821922919109,10.0
+GPT_median,0.08809828046532496,10.0
+Creatinina_skewness,0.08707728107507806,10.0
+QTinmunosupresores,0.08613446943279021,10.0
+Plaquetas_max,0.08375117971486101,10.0
+Adenocarcinoma,0.08116036641856572,10.0
+GGT_std,0.08081880274857406,10.0
+Fosfatasa Alcalina_skewness,0.0804292706676956,10.0
+Plaquetas_kurtosis,0.08035887226427618,10.0
+missingindicator_TP (s)_initial,0.07966205920350096,10.0
+missingindicator_TTPa (s)_initial,0.07933208950768372,10.0
+EnfDigest,0.07658423727463746,10.0
+Glucosa_sum,0.07650383356707377,10.0
+CAurinario,0.07635155568194,10.0
+Neutrófilos_min,0.07579319134379969,10.0
+Hemoglobina_max,0.07559490388274966,10.0
+Bilirrubina total_min,0.07541147276332039,10.0
+Hepatopatía,0.07506580422065384,10.0
+Neutrófilos_initial,0.07483954084718318,10.0
+Neutrófilos_quartile1,0.07447575883287211,10.0
+Albumina_kurtosis,0.07447172567320309,10.0
+Calcio_max,0.07380211105261097,10.0
+Hemoglobina_skewness,0.07351551064241124,10.0
+Plaquetas_iqr,0.07132150878504127,10.0
+Fosfatasa Alcalina_sum,0.07038783599020895,10.0
+Bilirrubina total_sum,0.07033230877944045,10.0
+Linea1Vinorelbina,0.07010676015349292,10.0
+CAmama,0.06985705144438924,10.0
+Bilirrubina total_initial,0.06837721535876327,10.0
+Plaquetas_std,0.06793531608815864,10.0
+TTPa (s)_std,0.06792488663280412,10.0
+Creatinina_sum,0.06730741750348432,10.0
+Urea_std,0.06514074200051978,10.0
+Albumina_sum,0.0636653154963627,10.0
+Leucocitos_kurtosis,0.06358680284196064,10.0
+Leucocitos_quartile3,0.06342039840368936,10.0
+Sodio_sum,0.06277617345055513,10.0
+Pembrolizumab,0.062156023461814064,10.0
+missingindicator_GPT_initial,0.062147487753549106,10.0
+Potasio_skewness,0.06207886560649793,10.0
+Cisplatino,0.061816271560530975,10.0
+GPT_min,0.06174524297639052,10.0
+Sodio_skewness,0.06057232277516919,10.0
+Leucocitos_median,0.060498136289532815,10.0
+LDH_sum,0.060246406594435226,10.0
+Albumina_max,0.060197140087478083,10.0
+NºLineasVO,0.059983169710597715,10.0
+PulmonarIntersticial,0.05982059879941086,10.0
+Albumina_homogeneous,0.05952065860491409,10.0
+GPT_sum,0.058324857616416516,10.0
+Potasio_max,0.05769121254815,10.0
+Urea_quartile1,0.056033200217729666,10.0
+Linfocitos_iqr,0.05549514575903446,10.0
+Fosfatasa Alcalina_homogeneous,0.05463963124661906,10.0
+Neoplasia,0.05426134198116443,10.0
+Fosfatasa Alcalina_median,0.054071219039749575,10.0
+EnfNRL,0.05376085986320659,10.0
+Cardiopatía,0.053582240512584325,10.0
+Hemoglobina_median,0.05278372603782877,10.0
+LDH_median,0.0514339510839726,10.0
+GPT_homogeneous,0.051151796230818766,10.0
+GPT_initial,0.051021895724154546,10.0
+CAneuroendocrino,0.049945943071849824,10.0
+Pemetrexed,0.049776408351901655,10.0
+Carboplatino,0.049776408351901655,10.0
+HistOtros,0.04920598712638349,10.0
+Leucocitos_std,0.04914349269403714,10.0
+EPOCAsma,0.04889461623839375,10.0
+Creatinina_iqr,0.04867604408227731,10.0
+GGT_quartile1,0.04851020752052131,10.0
+Leucocitos_skewness,0.048417140502219444,10.0
+GOT_quartile1,0.048026886908945916,10.0
+NºLineas,0.04774230059932664,10.0
+Plaquetas_initial,0.0474816101524909,10.0
+Linea1Pacli,0.047261437117529594,10.0
+TP (s)_sum,0.04708134803884784,10.0
+Sexo,0.04559550328857556,10.0
+Bilirrubina total_max,0.04525913883782453,10.0
+Urea_median,0.04523994174167292,10.0
+Calcio_std,0.04523691786389661,10.0
+Atezolumab,0.04498696898845446,10.0
+GGT_sum,0.044777612313718025,10.0
+GOT_std,0.04471144210699746,10.0
+Linea1Gemcitabina,0.043950985905625115,10.0
+Gemcitabina,0.04394042316919975,10.0
+Alectinib,0.04364010160345726,10.0
+Neutrófilos_rms,0.04308209807327574,10.0
+Trasplante,0.04293028547364439,10.0
+Durvalumab,0.04265342807985253,10.0
+Linfocitos_kurtosis,0.0425031149274115,10.0
+Linea1Atezo,0.041757384567954116,10.0
+Glucosa_std,0.04171664514231163,10.0
+GGT_homogeneous,0.0416740373565549,10.0
+GGT_iqr,0.04157663098165631,10.0
+Fosfatasa Alcalina_quartile3,0.0409818487014243,10.0
+GGT_skewness,0.04094249181641203,10.0
+Leucocitos_sum,0.040612295474294,10.0
+LDH_min,0.04039260852981095,10.0
+Linea1Etoposido,0.04002132633523093,10.0
+GPT_skewness,0.03941453185374525,10.0
+TP (s)_min,0.039400014885267357,10.0
+GPT_rms,0.03898283003675834,10.0
+LDH_quartile3,0.038677444631677785,10.0
+Urea_min,0.038601296196649634,10.0
+Potasio_quartile1,0.037759196547606455,10.0
+Urea_kurtosis,0.03739590975566627,10.0
+Leucocitos_initial,0.03732194478253991,10.0
+LDH_skewness,0.03714222419803847,10.0
+Linfocitos_std,0.03663599126097992,10.0
+Linfocitos_quartile1,0.03613973416822044,10.0
+Linea1Nivo,0.03609901278310043,10.0
+Sodio_iqr,0.035766758698822336,10.0
+Linea1Pemetrexed,0.035050040657463075,10.0
+TTPa (s)_initial,0.034598141984997034,10.0
+Albumina_initial,0.03427727331053272,10.0
+LDH_mean,0.0342443118244504,10.0
+GPT_kurtosis,0.03397703988091654,10.0
+Leucocitos_mean,0.033834216140558766,10.0
+Fosfatasa Alcalina_initial,0.0335069103477744,10.0
+Urea_rms,0.03316134063684682,10.0
+Neutrófilos_skewness,0.03315618833868049,10.0
+Urea_iqr,0.03246529994466564,10.0
+Leucocitos_iqr,0.032272144836722784,10.0
+Hemoglobina_quartile1,0.031908046665722,10.0
+Plaquetas_skewness,0.03182648722019096,10.0
+missingindicator_LDH_initial,0.03169181348044998,10.0
+Fosfatasa Alcalina_max,0.031499955253027415,10.0
+TP (s)_max,0.031439256534069177,10.0
+EnfCerebroVascular,0.031433786395370186,10.0
+Sodio_max,0.03137679007345698,10.0
+GOT_rms,0.03132935744844859,10.0
+Gefitinib,0.03117127948322488,10.0
+Calcio_kurtosis,0.031151657596304953,10.0
+Urea_skewness,0.03090944865257603,10.0
+Urea_quartile3,0.030760432379205314,10.0
+Hemoglobina_min,0.030455607556926223,10.0
+OtrosFarmacos,0.03041433323010678,10.0
+Linea1Beva,0.030124736970582985,10.0
+GOT_skewness,0.02974543183161799,10.0
+Glucosa_iqr,0.029731409810428773,10.0
+GOT_median,0.02947425355051796,10.0
+Lorlatinib,0.029442353694673656,10.0
+GGT_quartile3,0.029423551366745952,10.0
+TP (s)_std,0.029418815094423876,10.0
+LDH_homogeneous,0.02940377304784202,10.0
+CelPeq,0.029365369304870822,10.0
+Calcio_sum,0.02890806018459741,10.0
+NeoHEM,0.028347729698166648,10.0
+TTPa (s)_mean,0.028087962564340808,10.0
+ERC,0.028054985334192987,10.0
+TTPa (s)_quartile3,0.028030089642903197,10.0
+GOT_quartile3,0.02762960380121735,10.0
+Neutrófilos_std,0.02732454716644812,10.0
+TP (s)_homogeneous,0.027079775706088185,10.0
+Albumina_min,0.02699634081710984,10.0
+Potasio_min,0.02699184074122745,10.0
+Calcio_homogeneous,0.026455822709811262,10.0
+Urea_max,0.026253199281032747,10.0
+Glucosa_initial,0.02589127791268726,10.0
+missingindicator_Fosfatasa Alcalina_min,0.025453445664111153,10.0
+missingindicator_Fosfatasa Alcalina_median,0.025453445664111153,10.0
+missingindicator_Fosfatasa Alcalina_mean,0.025453445664111153,10.0
+missingindicator_Fosfatasa Alcalina_max,0.025453445664111153,10.0
+missingindicator_Fosfatasa Alcalina_sum,0.025453445664111153,10.0
+missingindicator_Fosfatasa Alcalina_std,0.025453445664111153,10.0
+missingindicator_Fosfatasa Alcalina_skewness,0.025453445664111153,10.0
+missingindicator_Fosfatasa Alcalina_kurtosis,0.025453445664111153,10.0
+missingindicator_Fosfatasa Alcalina_quartile3,0.025453445664111153,10.0
+missingindicator_Fosfatasa Alcalina_quartile1,0.025453445664111153,10.0
+missingindicator_Fosfatasa Alcalina_rms,0.025453445664111153,10.0
+missingindicator_Fosfatasa Alcalina_iqr,0.025453445664111153,10.0
+Creatinina_min,0.025095394145822784,10.0
+Glucosa_kurtosis,0.02507255675852121,10.0
+Bilirrubina total_homogeneous,0.02499677401938767,10.0
+Bilirrubina total_rms,0.024677275247796362,10.0
+GPT_mean,0.024632388192536932,10.0
+Bilirrubina total_kurtosis,0.0245269168294182,10.0
+Urea_mean,0.02435810773451049,10.0
+AIT,0.024238698101878557,10.0
+Bilirrubina total_quartile1,0.024116853158718816,10.0
+LDH_initial,0.02403718602627685,10.0
+Linea1Carbo,0.023982676060444456,10.0
+Linfocitos_skewness,0.023965180487010435,10.0
+Creatinina_rms,0.023895988908732315,10.0
+Linfocitos_homogeneous,0.023711134327665518,10.0
+GOT_kurtosis,0.023628501313640894,10.0
+InjertoCV,0.023298283362094684,10.0
+Sodio_quartile3,0.023266024096960963,10.0
+Calcio_quartile1,0.023246981859225444,10.0
+Calcio_min,0.02314681751437451,10.0
+GOT_iqr,0.022969130571775048,10.0
+missingindicator_Fosfatasa Alcalina_initial,0.022915619086592922,10.0
+Creatinina_kurtosis,0.022719338137217295,10.0
+Obesidad,0.02271339278560531,10.0
+TP (s)_skewness,0.022701956660896975,10.0
+Potasio_homogeneous,0.022665914581709665,10.0
+missingindicator_GPT_median,0.022584179717347927,10.0
+missingindicator_GPT_skewness,0.022584179717347927,10.0
+missingindicator_GPT_quartile1,0.022584179717347927,10.0
+missingindicator_GPT_kurtosis,0.022584179717347927,10.0
+missingindicator_GPT_rms,0.022584179717347927,10.0
+missingindicator_GPT_iqr,0.022584179717347927,10.0
+missingindicator_GPT_sum,0.022584179717347927,10.0
+missingindicator_GPT_min,0.022584179717347927,10.0
+missingindicator_GPT_max,0.022584179717347927,10.0
+missingindicator_GPT_mean,0.022584179717347927,10.0
+missingindicator_GPT_std,0.022584179717347927,10.0
+missingindicator_GPT_quartile3,0.022584179717347927,10.0
+Albumina_std,0.022523246074559855,10.0
+GOT_initial,0.022442033403754724,10.0
+Neutrófilos_sum,0.022230217260055397,10.0
+Hemoglobina_kurtosis,0.022211916316946467,10.0
+Creatinina_quartile3,0.022188710678370988,10.0
+Bilirrubina total_mean,0.02215705783178134,10.0
+GGT_max,0.02199464886959985,10.0
+Sodio_homogeneous,0.021987947213583076,10.0
+Fosfatasa Alcalina_iqr,0.02173314152623585,10.0
+GGT_rms,0.021679073283114095,10.0
+Albumina_quartile3,0.021332047920902625,10.0
+Crizotinib,0.02112052812600078,10.0
+missingindicator_GGT_initial,0.021062295870733844,10.0
+TEP,0.020975068624151768,10.0
+GOT_homogeneous,0.020801274852376157,10.0
+Creatinina_mean,0.020757094117566797,10.0
+Calcio_iqr,0.020548202623327138,10.0
+Urea_sum,0.020455011138494097,10.0
+Sodio_rms,0.02004979402444624,10.0
+Sodio_mean,0.019939453557427208,10.0
+Plaquetas_quartile1,0.019750658901032874,10.0
+Leucocitos_max,0.01969548247547623,10.0
+Bevacizumab,0.019415606839683488,10.0
+GPT_max,0.019375149195018124,10.0
+GOT_sum,0.01914103785637697,10.0
+Plaquetas_homogeneous,0.01896911572669255,10.0
+TTPa (s)_homogeneous,0.018923839568637187,10.0
+Albumina_skewness,0.01870718023496217,10.0
+Linea1Pembro,0.018690586410526223,10.0
+Bilirrubina total_skewness,0.018611940133469163,10.0
+missingindicator_LDH_skewness,0.01845840267921455,10.0
+missingindicator_LDH_std,0.01845840267921455,10.0
+missingindicator_LDH_sum,0.01845840267921455,10.0
+missingindicator_LDH_max,0.01845840267921455,10.0
+missingindicator_LDH_kurtosis,0.01845840267921455,10.0
+missingindicator_LDH_rms,0.01845840267921455,10.0
+missingindicator_LDH_min,0.01845840267921455,10.0
+missingindicator_LDH_iqr,0.01845840267921455,10.0
+missingindicator_LDH_quartile3,0.01845840267921455,10.0
+missingindicator_LDH_median,0.01845840267921455,10.0
+missingindicator_LDH_mean,0.01845840267921455,10.0
+missingindicator_LDH_quartile1,0.01845840267921455,10.0
+CAóseo,0.018357256451801536,10.0
+Neutrófilos_mean,0.01833122497381272,10.0
+missingindicator_Urea_initial,0.018243074053401948,10.0
+TP (s)_initial,0.01807077185991657,10.0
+missingindicator_Creatinina_initial,0.017938791602173394,10.0
+MelanomaPiel,0.01787344803493462,10.0
+LDH_iqr,0.017648231148289534,10.0
+Edad,0.017546965526872925,10.0
+DM,0.017498685431083263,10.0
+missingindicator_GOT_iqr,0.017498027837588512,10.0
+missingindicator_GOT_kurtosis,0.017498027837588512,10.0
+missingindicator_GOT_quartile3,0.017498027837588512,10.0
+missingindicator_GOT_quartile1,0.017498027837588512,10.0
+missingindicator_GOT_median,0.017498027837588512,10.0
+missingindicator_GOT_min,0.017498027837588512,10.0
+missingindicator_GOT_max,0.017498027837588512,10.0
+missingindicator_GOT_std,0.017498027837588512,10.0
+missingindicator_GOT_sum,0.017498027837588512,10.0
+missingindicator_GOT_rms,0.017498027837588512,10.0
+missingindicator_GOT_skewness,0.017498027837588512,10.0
+missingindicator_GOT_mean,0.017498027837588512,10.0
+Urea_initial,0.01745639560691498,10.0
+Neutrófilos_median,0.01733644358189708,10.0
+Leucocitos_min,0.01724443396749143,10.0
+missingindicator_Calcio_sum,0.017165535887344995,10.0
+missingindicator_Calcio_rms,0.017165535887344995,10.0
+missingindicator_Calcio_median,0.017165535887344995,10.0
+missingindicator_Calcio_skewness,0.017165535887344995,10.0
+missingindicator_Calcio_kurtosis,0.017165535887344995,10.0
+missingindicator_Calcio_std,0.017165535887344995,10.0
+missingindicator_Calcio_quartile1,0.017165535887344995,10.0
+missingindicator_Calcio_min,0.017165535887344995,10.0
+missingindicator_Calcio_max,0.017165535887344995,10.0
+missingindicator_Calcio_mean,0.017165535887344995,10.0
+missingindicator_Calcio_iqr,0.017165535887344995,10.0
+missingindicator_Calcio_quartile3,0.017165535887344995,10.0
+Neutrófilos_quartile3,0.016962903807712808,10.0
+Fosfatasa Alcalina_mean,0.016951869554226607,10.0
+Glucosa_skewness,0.016930636676208494,10.0
+missingindicator_TNMIV,0.016575962572829887,10.0
+Potasio_median,0.016438268895280495,10.0
+Sodio_kurtosis,0.01632437975774353,10.0
+Creatinina_quartile1,0.016052822620057146,10.0
+missingindicator_GGT_median,0.01497184462587982,10.0
+missingindicator_GGT_min,0.01497184462587982,10.0
+missingindicator_GGT_std,0.01497184462587982,10.0
+missingindicator_GGT_mean,0.01497184462587982,10.0
+missingindicator_GGT_max,0.01497184462587982,10.0
+missingindicator_GGT_sum,0.01497184462587982,10.0
+missingindicator_GGT_quartile1,0.01497184462587982,10.0
+missingindicator_GGT_skewness,0.01497184462587982,10.0
+missingindicator_GGT_kurtosis,0.01497184462587982,10.0
+missingindicator_GGT_iqr,0.01497184462587982,10.0
+missingindicator_GGT_rms,0.01497184462587982,10.0
+missingindicator_GGT_quartile3,0.01497184462587982,10.0
+Plaquetas_sum,0.014944878894143707,10.0
+Sodio_std,0.014929763935147247,10.0
+Plaquetas_min,0.014538105546719034,10.0
+CAORL,0.01419489097196241,10.0
+Linfocitos_quartile3,0.014083349897448702,10.0
+TTPa (s)_iqr,0.01401732824672074,10.0
+Albumina_median,0.01375685906700245,10.0
+TTPa (s)_rms,0.01372552854928515,10.0
+Artropatía,0.013691091032071466,10.0
+CADigestivo,0.013623618214154278,10.0
+CAGenitalFem,0.01361404053582378,10.0
+Docetaxel,0.013373064854622134,10.0
+Mesotelioma,0.013066645937749055,10.0
+Hemoglobina_iqr,0.012794420293478563,10.0
+GOT_max,0.012769656433677052,10.0
+PrótesisArticular,0.012763244741113556,10.0
+TTPa (s)_median,0.012751781060985637,10.0
+LDH_quartile1,0.01273186164645583,10.0
+Neutrófilos_kurtosis,0.012714256365389967,10.0
+TTPa (s)_max,0.012699995316813971,10.0
+TP (s)_mean,0.012501967995911878,10.0
+Albumina_quartile1,0.012480737082599419,10.0
+Etoposido,0.012284874906369737,10.0
+Neutrófilos_max,0.012257042331389509,10.0
+NºLineasIV,0.012240869111271072,10.0
+Potasio_iqr,0.012027861946846559,10.0
+TTPa (s)_sum,0.012022685061327885,10.0
+missingindicator_Potasio_initial,0.01192876981222187,10.0
+missingindicator_Sodio_initial,0.01192876981222187,10.0
+DosisRT,0.011903237219046858,10.0
+Linfocitos_mean,0.01186723865420147,10.0
+GGT_mean,0.01184907990502579,10.0
+Traqueostomía,0.01174357965297222,10.0
+Bilirrubina total_std,0.011715001269220508,10.0
+GGT_initial,0.011601232750874936,10.0
+Calcio_median,0.011460491988791883,10.0
+GOT_min,0.01143763599912477,10.0
+TTPa (s)_quartile1,0.011374037036730355,10.0
+missingindicator_GOT_initial,0.011371758647009943,10.0
+missingindicator_Bilirrubina total_initial,0.011351349143064206,10.0
+Fosfatasa Alcalina_std,0.01112317067888547,10.0
+Calcio_rms,0.011056276016919466,10.0
+Bilirrubina total_quartile3,0.010944657105400456,10.0
+TP (s)_quartile1,0.010707367956842904,10.0
+Indiferenciado,0.010492751052169475,10.0
+Potasio_std,0.01036148892615251,10.0
+GPT_quartile3,0.010276033412617697,10.0
+Potasio_quartile3,0.010245663866292111,10.0
+Alcohol,0.010243113799111012,10.0
+Potasio_sum,0.009895665539229121,10.0
+LDH_kurtosis,0.009827371295332964,10.0
+Afatinib,0.009820799570033466,10.0
+missingindicator_Hemoglobina_initial,0.009483563281360725,10.0
+missingindicator_Leucocitos_initial,0.009483563281360725,10.0
+missingindicator_Neutrófilos_initial,0.009483563281360725,10.0
+Erlotinib,0.00942473575842269,10.0
+Creatinina_std,0.009111632693519361,10.0
+Potasio_rms,0.008925344665820262,10.0
+missingindicator_Glucosa_initial,0.008820024002765332,10.0
+Glucosa_quartile1,0.008814166534615276,10.0
+LDH_max,0.008695051408922827,10.0
+missingindicator_Linea1Etoposido,0.008688603697288312,10.0
+missingindicator_Linea1Pembro,0.008688603697288312,10.0
+missingindicator_Linea1Pemetrexed,0.008688603697288312,10.0
+missingindicator_Linea1Carbo,0.00868860369728831,10.0
+missingindicator_Linea1Pacli,0.00868860369728831,10.0
+missingindicator_Linea1Atezo,0.00868860369728831,10.0
+missingindicator_Linea1Cisplatino,0.00868860369728831,10.0
+missingindicator_Linea1Gemcitabina,0.00868860369728831,10.0
+missingindicator_Linea1Vinorelbina,0.00868860369728831,10.0
+missingindicator_Linea1Nivo,0.00868860369728831,10.0
+missingindicator_Linea1Beva,0.00868860369728831,10.0
+Plaquetas_quartile3,0.008205021930990562,10.0
+Irinotecan,0.008144958430965035,10.0
+CIsquémica,0.008094603295227994,10.0
+Glucosa_homogeneous,0.007998524987087382,10.0
+FRA,0.007541637555569823,10.0
+Potasio_initial,0.007291587775130165,10.0
+Linfocitos_rms,0.007229256706774683,10.0
+missingindicator_Calcio_initial,0.007172461091847584,10.0
+Creatinina_median,0.007154647965106917,10.0
+Creatinina_max,0.007066081417061694,10.0
+TP (s)_iqr,0.006962628754674471,10.0
+Potasio_mean,0.006908381202911127,10.0
+Glucosa_min,0.006880638709918816,10.0
+Glucosa_mean,0.006087033046897947,10.0
+missingindicator_Plaquetas_mean,0.005950406947056786,10.0
+missingindicator_Plaquetas_min,0.005950406947056786,10.0
+missingindicator_Plaquetas_max,0.005950406947056786,10.0
+missingindicator_Plaquetas_median,0.005950406947056786,10.0
+missingindicator_Plaquetas_std,0.005950406947056786,10.0
+missingindicator_Plaquetas_iqr,0.005950406947056786,10.0
+missingindicator_Plaquetas_quartile1,0.005950406947056786,10.0
+missingindicator_Plaquetas_quartile3,0.005950406947056786,10.0
+missingindicator_Linfocitos_kurtosis,0.005950406947056786,10.0
+missingindicator_Linfocitos_quartile1,0.005950406947056786,10.0
+missingindicator_Linfocitos_quartile3,0.005950406947056786,10.0
+missingindicator_Linfocitos_iqr,0.005950406947056786,10.0
+missingindicator_Linfocitos_rms,0.005950406947056786,10.0
+missingindicator_Plaquetas_sum,0.005950406947056786,10.0
+missingindicator_Plaquetas_skewness,0.005950406947056786,10.0
+missingindicator_Plaquetas_kurtosis,0.005950406947056786,10.0
+missingindicator_Plaquetas_rms,0.005950406947056786,10.0
+missingindicator_Linfocitos_min,0.005950406947056786,10.0
+missingindicator_Linfocitos_mean,0.005950406947056786,10.0
+missingindicator_Linfocitos_max,0.005950406947056786,10.0
+missingindicator_Linfocitos_sum,0.005950406947056786,10.0
+missingindicator_Linfocitos_std,0.005950406947056786,10.0
+missingindicator_Linfocitos_skewness,0.005950406947056786,10.0
+missingindicator_Linfocitos_median,0.005950406947056786,10.0
+Glucosa_median,0.005756598003550175,10.0
+Creatinina_homogeneous,0.005729963110645509,10.0
+GPT_iqr,0.005653005949807277,10.0
+LES,0.005623959566150664,10.0
+Epidermoide,0.005442006375840059,10.0
+TP (s)_median,0.005419336804088465,10.0
+ValvAórtica,0.005292085262267772,10.0
+TP (s)_kurtosis,0.005159969244825402,10.0
+Hemoglobina_quartile3,0.004915149532610792,10.0
+missingindicator_Albumina_sum,0.004707415486391086,10.0
+missingindicator_Albumina_median,0.004707415486391086,10.0
+missingindicator_Albumina_quartile3,0.004707415486391086,10.0
+missingindicator_Albumina_kurtosis,0.004707415486391086,10.0
+missingindicator_Albumina_skewness,0.004707415486391086,10.0
+missingindicator_Albumina_rms,0.004707415486391086,10.0
+missingindicator_Albumina_mean,0.004707415486391086,10.0
+missingindicator_Albumina_max,0.004707415486391086,10.0
+missingindicator_Albumina_iqr,0.004707415486391086,10.0
+missingindicator_Albumina_std,0.004707415486391086,10.0
+missingindicator_Albumina_min,0.004707415486391086,10.0
+missingindicator_Albumina_quartile1,0.004707415486391086,10.0
+CATiroides,0.004693137447513416,10.0
+Glucosa_quartile3,0.00464588482448035,10.0
+Brigatinib,0.004507332067372536,10.0
+Albumina_rms,0.004285523100566942,10.0
+LDH_rms,0.004133839137649485,10.0
+Hemoglobina_sum,0.004128254326828181,10.0
+TP (s)_rms,0.003938288158267224,10.0
+Sodio_quartile1,0.003873887345280712,10.0
+Paclitaxel,0.00377873114955454,10.0
+Calcio_mean,0.0037622176893577614,10.0
+GOT_mean,0.003662632083496217,10.0
+Plaquetas_mean,0.0036309487232733017,10.0
+Crohn,0.0036153812649934356,10.0
+missingindicator_TP (s)_rms,0.003429743179903015,10.0
+missingindicator_TTPa (s)_max,0.003429743179903015,10.0
+missingindicator_TTPa (s)_mean,0.003429743179903015,10.0
+missingindicator_TTPa (s)_median,0.003429743179903015,10.0
+missingindicator_TTPa (s)_min,0.003429743179903015,10.0
+missingindicator_TP (s)_max,0.003429743179903015,10.0
+missingindicator_TP (s)_mean,0.003429743179903015,10.0
+missingindicator_TP (s)_median,0.003429743179903015,10.0
+missingindicator_TP (s)_std,0.003429743179903015,10.0
+missingindicator_TP (s)_sum,0.003429743179903015,10.0
+missingindicator_TP (s)_skewness,0.003429743179903015,10.0
+missingindicator_TP (s)_kurtosis,0.003429743179903015,10.0
+missingindicator_TP (s)_quartile1,0.003429743179903015,10.0
+missingindicator_TTPa (s)_sum,0.003429743179903015,10.0
+missingindicator_TTPa (s)_skewness,0.003429743179903015,10.0
+missingindicator_TTPa (s)_kurtosis,0.003429743179903015,10.0
+missingindicator_TTPa (s)_quartile1,0.003429743179903015,10.0
+missingindicator_TTPa (s)_quartile3,0.003429743179903015,10.0
+missingindicator_TTPa (s)_iqr,0.003429743179903015,10.0
+missingindicator_TTPa (s)_rms,0.003429743179903015,10.0
+missingindicator_TTPa (s)_std,0.003429743179903015,10.0
+missingindicator_TP (s)_iqr,0.003429743179903015,10.0
+missingindicator_TP (s)_quartile3,0.003429743179903015,10.0
+missingindicator_TP (s)_min,0.003429743179903015,10.0
+Leucocitos_quartile1,0.003403254831192854,10.0
+Plaquetas_rms,0.003398686433380522,10.0
+ValvMitral,0.003079350573655433,10.0
+TP (s)_quartile3,0.002845541918718888,10.0
+Leucocitos_homogeneous,0.0028002731439675044,10.0
+Neutrófilos_homogeneous,0.0028002731439675044,10.0
+Bilirrubina total_iqr,0.002791356926006332,10.0
+Linfocitos_max,0.0027402213842387673,10.0
+Glucosa_max,0.002714373579312688,10.0
+missingindicator_Albumina_initial,0.0026693558945992605,10.0
+Urea_homogeneous,0.0025163873976213114,10.0
+missingindicator_Urea_skewness,0.0024281511039074464,10.0
+missingindicator_Urea_kurtosis,0.0024281511039074464,10.0
+missingindicator_Creatinina_sum,0.0024281511039074464,10.0
+missingindicator_Creatinina_skewness,0.0024281511039074464,10.0
+missingindicator_Creatinina_kurtosis,0.0024281511039074464,10.0
+missingindicator_Creatinina_std,0.0024281511039074464,10.0
+missingindicator_Creatinina_quartile1,0.0024281511039074464,10.0
+missingindicator_Creatinina_min,0.0024281511039074464,10.0
+missingindicator_Urea_iqr,0.0024281511039074464,10.0
+missingindicator_Urea_rms,0.0024281511039074464,10.0
+missingindicator_Potasio_quartile3,0.0024281511039074464,10.0
+missingindicator_Potasio_iqr,0.0024281511039074464,10.0
+missingindicator_Potasio_rms,0.0024281511039074464,10.0
+missingindicator_Potasio_quartile1,0.0024281511039074464,10.0
+missingindicator_Urea_min,0.0024281511039074464,10.0
+missingindicator_Creatinina_median,0.0024281511039074464,10.0
+missingindicator_Creatinina_mean,0.0024281511039074464,10.0
+missingindicator_Creatinina_max,0.0024281511039074464,10.0
+missingindicator_Urea_sum,0.0024281511039074464,10.0
+missingindicator_Creatinina_quartile3,0.0024281511039074464,10.0
+missingindicator_Creatinina_rms,0.0024281511039074464,10.0
+missingindicator_Creatinina_iqr,0.0024281511039074464,10.0
+missingindicator_Sodio_max,0.0024281511039074464,10.0
+missingindicator_Sodio_mean,0.0024281511039074464,10.0
+missingindicator_Sodio_median,0.0024281511039074464,10.0
+missingindicator_Sodio_min,0.0024281511039074464,10.0
+missingindicator_Potasio_max,0.0024281511039074464,10.0
+missingindicator_Potasio_mean,0.0024281511039074464,10.0
+missingindicator_Potasio_median,0.0024281511039074464,10.0
+missingindicator_Potasio_std,0.0024281511039074464,10.0
+missingindicator_Potasio_sum,0.0024281511039074464,10.0
+missingindicator_Potasio_skewness,0.0024281511039074464,10.0
+missingindicator_Potasio_kurtosis,0.0024281511039074464,10.0
+missingindicator_Sodio_std,0.0024281511039074464,10.0
+missingindicator_Sodio_sum,0.0024281511039074464,10.0
+missingindicator_Sodio_skewness,0.0024281511039074464,10.0
+missingindicator_Sodio_kurtosis,0.0024281511039074464,10.0
+missingindicator_Sodio_quartile1,0.0024281511039074464,10.0
+missingindicator_Sodio_quartile3,0.0024281511039074464,10.0
+missingindicator_Sodio_iqr,0.0024281511039074464,10.0
+missingindicator_Urea_quartile3,0.0024281511039074464,10.0
+missingindicator_Urea_quartile1,0.0024281511039074464,10.0
+missingindicator_Urea_max,0.0024281511039074464,10.0
+missingindicator_Urea_mean,0.0024281511039074464,10.0
+missingindicator_Urea_median,0.0024281511039074464,10.0
+missingindicator_Urea_std,0.0024281511039074464,10.0
+missingindicator_Sodio_rms,0.0024281511039074464,10.0
+missingindicator_Potasio_min,0.0024281511039074464,10.0
+Calcio_skewness,0.002387372992976359,10.0
+Albumina_mean,0.002367579514004459,10.0
+Fosfatasa Alcalina_quartile1,0.002341739964935513,10.0
+missingindicator_Hemoglobina_sum,0.002306792842213285,10.0
+missingindicator_Hemoglobina_std,0.002306792842213285,10.0
+missingindicator_Hemoglobina_skewness,0.002306792842213285,10.0
+missingindicator_Leucocitos_skewness,0.002306792842213285,10.0
+missingindicator_Leucocitos_kurtosis,0.002306792842213285,10.0
+missingindicator_Hemoglobina_kurtosis,0.002306792842213285,10.0
+missingindicator_Hemoglobina_max,0.002306792842213285,10.0
+missingindicator_Neutrófilos_quartile1,0.002306792842213285,10.0
+missingindicator_Neutrófilos_sum,0.002306792842213285,10.0
+missingindicator_Neutrófilos_kurtosis,0.002306792842213285,10.0
+missingindicator_Neutrófilos_min,0.002306792842213285,10.0
+missingindicator_Neutrófilos_std,0.002306792842213285,10.0
+missingindicator_Leucocitos_rms,0.002306792842213285,10.0
+missingindicator_Leucocitos_iqr,0.002306792842213285,10.0
+missingindicator_Leucocitos_quartile3,0.002306792842213285,10.0
+missingindicator_Neutrófilos_max,0.002306792842213285,10.0
+missingindicator_Neutrófilos_mean,0.002306792842213285,10.0
+missingindicator_Neutrófilos_median,0.002306792842213285,10.0
+missingindicator_Neutrófilos_skewness,0.002306792842213285,10.0
+missingindicator_Neutrófilos_rms,0.002306792842213285,10.0
+missingindicator_Neutrófilos_quartile3,0.002306792842213285,10.0
+missingindicator_Leucocitos_sum,0.002306792842213285,10.0
+missingindicator_Neutrófilos_iqr,0.002306792842213285,10.0
+missingindicator_Leucocitos_quartile1,0.002306792842213285,10.0
+missingindicator_Hemoglobina_median,0.002306792842213285,10.0
+missingindicator_Hemoglobina_mean,0.002306792842213285,10.0
+missingindicator_Leucocitos_min,0.002306792842213285,10.0
+missingindicator_Hemoglobina_quartile1,0.002306792842213285,10.0
+missingindicator_Hemoglobina_quartile3,0.002306792842213285,10.0
+missingindicator_Hemoglobina_iqr,0.002306792842213285,10.0
+missingindicator_Leucocitos_std,0.002306792842213285,10.0
+missingindicator_Leucocitos_max,0.002306792842213285,10.0
+missingindicator_Leucocitos_mean,0.002306792842213285,10.0
+missingindicator_Leucocitos_median,0.002306792842213285,10.0
+missingindicator_Hemoglobina_rms,0.002306792842213285,10.0
+missingindicator_Hemoglobina_min,0.002306792842213285,10.0
+Creatinina_initial,0.002246425892130785,10.0
+TTPa (s)_min,0.0022425758559758142,10.0
+Calcio_initial,0.0021175090153357223,10.0
+missingindicator_Glucosa_quartile3,0.002039267659740503,10.0
+missingindicator_Glucosa_rms,0.002039267659740503,10.0
+missingindicator_Glucosa_iqr,0.002039267659740503,10.0
+missingindicator_Glucosa_quartile1,0.002039267659740503,10.0
+missingindicator_Glucosa_std,0.002039267659740503,10.0
+missingindicator_Glucosa_kurtosis,0.002039267659740503,10.0
+missingindicator_Glucosa_skewness,0.002039267659740503,10.0
+missingindicator_Glucosa_sum,0.002039267659740503,10.0
+missingindicator_Glucosa_median,0.002039267659740503,10.0
+missingindicator_Glucosa_max,0.002039267659740503,10.0
+missingindicator_Glucosa_mean,0.002039267659740503,10.0
+missingindicator_Glucosa_min,0.002039267659740503,10.0
+Neutrófilos_iqr,0.00202857572986265,10.0
+missingindicator_Plaquetas_initial,0.0019833399973482007,10.0
+missingindicator_Linfocitos_initial,0.0019833399973482007,10.0
+Hemoglobina_rms,0.0019043339716761688,10.0
+Osimertinib,0.001854861648674171,10.0
+Leucocitos_rms,0.001850190468237768,10.0
+Hemoglobina_homogeneous,0.001831269722808296,10.0
+Potasio_kurtosis,0.0015263370036454284,10.0
+LDH_std,0.0015177547159372978,10.0
+TTPa (s)_skewness,0.0014314844198304786,10.0
+Sodio_initial,0.00141766245519937,10.0
+Fosfatasa Alcalina_min,0.0012459451703310457,10.0
+Hemoglobina_mean,0.001094805447175342,10.0
+Calcio_quartile3,0.001074301538283066,10.0
+ACmonoclonalprevio,0.0009860415916296014,10.0
+GPT_quartile1,0.0006286829779866214,10.0
+Fosfatasa Alcalina_rms,0.0005786243001019005,10.0
+missingindicator_Bilirrubina total_max,0.0004208231854487262,10.0
+missingindicator_Bilirrubina total_kurtosis,0.0004208231854487262,10.0
+missingindicator_Bilirrubina total_quartile3,0.0004208231854487262,10.0
+missingindicator_Bilirrubina total_iqr,0.0004208231854487262,10.0
+missingindicator_Bilirrubina total_min,0.0004208231854487262,10.0
+missingindicator_Bilirrubina total_mean,0.0004208231854487262,10.0
+missingindicator_Bilirrubina total_quartile1,0.0004208231854487262,10.0
+missingindicator_Bilirrubina total_sum,0.0004208231854487262,10.0
+missingindicator_Bilirrubina total_std,0.0004208231854487262,10.0
+missingindicator_Bilirrubina total_median,0.0004208231854487262,10.0
+missingindicator_Bilirrubina total_skewness,0.0004208231854487262,10.0
+missingindicator_Bilirrubina total_rms,0.0004208231854487262,10.0
+Albumina_iqr,0.000378092007990493,10.0
+Glucosa_rms,0.0002356841360178989,10.0
+VIH,0.00018999451925231104,10.0
+GPT_std,0.00016360313994178961,10.0
+Desnutrición,8.437651056609447e-05,10.0
+CAGenitalMasc,0.0,10.0
+CASNC,0.0,10.0
