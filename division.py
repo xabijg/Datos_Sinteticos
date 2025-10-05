@@ -4,8 +4,9 @@ from sklearn.model_selection import train_test_split, StratifiedKFold
 from sklearn.preprocessing import RobustScaler
 
 possible_targets = ["HONG","BACT","VIRUS"]
+id_column = "id"
 
-def split_holdout(base_name):
+def split_holdout(base_name): #Separamos en train y test (80% y 20%)
     print(f"\n Split Holdout - Dataset: {base_name}")
 
     input_filename = f"{base_name}_encoded.csv"
@@ -37,135 +38,85 @@ def split_holdout(base_name):
     print(f"   - {output_test_path}")
 
 
-def cross_validation(base_name):
-    print(f"\n Cross-validation Estratificada (10 folds) - Dataset: {base_name}")
+
+def crossValidation_scall(base_name):
+    print(f"\nCrossValidation Estratificada (10 folds) - Dataset: {base_name}")
 
     input_train_filename = f"train_{base_name}.csv"
     train_path = f"databases/splits/{input_train_filename}"
-
-    df_train = pd.read_csv(train_path)
+    df = pd.read_csv(train_path)
 
     target_column = None
     for col in possible_targets:
-        if col in df_train.columns:
+        if col in df.columns:
             target_column = col
             break
 
     if target_column is None:
-        raise ValueError(f" Ninguna de las columnas objetivo posibles se encontró en {input_train_filename}")
+        raise ValueError(f"Ninguna de las columnas objetivo posibles se encontró en {input_train_filename}")
+
 
     basename = input_train_filename.replace("train_", "").replace(".csv", "")
     folds_output_dir = f"databases/splits/folds/{basename}"
-
     os.makedirs(folds_output_dir, exist_ok=True)
 
-    df = pd.read_csv(train_path)
+    # Definimos columnas que NO deben ser estandarizadas:
+    # - La columna 'id'
+    # - La columna objetivo
+    exclude_cols = [id_column, target_column]
 
-    if target_column not in df.columns:
-        raise ValueError(f" La columna '{target_column}' no existe en el archivo {input_train_filename}")
+    # Añadimos valores q estén dentro del rango [0,1]
+    for col in df.columns:
+        if col in exclude_cols:
+            continue
+        col_min = df[col].min()
+        col_max = df[col].max()
+        if 0.0 <= col_min and col_max <= 1.0:
+            exclude_cols.append(col)
 
     skf = StratifiedKFold(n_splits=10, shuffle=True, random_state=42)
 
+    # Recorremos cada fold, obteniendo índices de train y validación
     for fold, (train_idx, val_idx) in enumerate(skf.split(df, df[target_column]), start=1):
+        # Seleccionamos los datos para entrenamiento y validación de este fold
         df_train_fold = df.iloc[train_idx].reset_index(drop=True)
         df_val_fold = df.iloc[val_idx].reset_index(drop=True)
 
+        # Objeto
+        scaler = RobustScaler()
+
+        # Definimos las columnas que vamos a escalar
+        features_to_scale = [col for col in df.columns if col not in exclude_cols]
+
+        # Hacemos copias para no modificar el dataset original
+        df_train_fold_scaled = df_train_fold.copy()
+        df_val_fold_scaled = df_val_fold.copy()
+
+        # Escalamos SOLO las columnas seleccionadas:
+        # - Ajustamos el scaler con los datos de entrenamiento (fit_transform)
+        # - Aplicamos la misma transformación al conjunto de validación (transform)
+        df_train_fold_scaled[features_to_scale] = scaler.fit_transform(df_train_fold[features_to_scale])
+        df_val_fold_scaled[features_to_scale] = scaler.transform(df_val_fold[features_to_scale])
+
+        # Construimos las rutas para guardar los CSVs de cada fold
         train_fold_path = f"{folds_output_dir}/train_fold_{fold}_{basename}.csv"
         val_fold_path = f"{folds_output_dir}/val_fold_{fold}_{basename}.csv"
 
-        df_train_fold.to_csv(train_fold_path, index=False)
-        df_val_fold.to_csv(val_fold_path, index=False)
+        df_train_fold_scaled.to_csv(train_fold_path, index=False)
+        df_val_fold_scaled.to_csv(val_fold_path, index=False)
 
         print(f"Fold {fold}: Train = {len(df_train_fold)} muestras, Val = {len(df_val_fold)} muestras")
 
-    print(f"\n División en folds completada y guardada en {folds_output_dir}/")
-
-
-def fit_scale_df(df):
-    ids = df['id']
-    df_no_id = df.drop(columns=['id'])
-
-    cols_to_exclude = [col for col in df_no_id.columns if col in possible_targets]
-    cols_to_scale = df_no_id.drop(columns=cols_to_exclude)
+    print(f"\nDivisión en folds completada y guardada en {folds_output_dir}/")
 
 
 
-    scaler = RobustScaler()
-    scaled_array = scaler.fit_transform(cols_to_scale)
-    df_scaled = pd.DataFrame(scaled_array, columns=cols_to_scale.columns, index=df.index)
-
-    df_final = pd.concat([ids, df_scaled, df_no_id[cols_to_exclude]], axis=1)
-
-
-    return df_final, scaler, list(cols_to_scale.columns)
-
-
-def transform_df(df, scaler, cols_to_scale):
-    ids = df['id']
-    df_no_id = df.drop(columns=['id'])
-
-    df_to_scale = df_no_id[cols_to_scale]
-
-    scaled_array = scaler.transform(df_to_scale)
-    df_scaled = pd.DataFrame(scaled_array, columns=cols_to_scale, index=df.index)
-
-    cols_to_exclude = [col for col in df_no_id.columns if col in possible_targets]
-
-    df_final = pd.concat([ids, df_scaled, df_no_id[cols_to_exclude]], axis=1)
-    return df_final
-
-
-def scale_all(base_name):
-    print(f"\n Escalado de datos (RobustScaler) - Dataset: {base_name}")
-
-    normalized_base_dir = f"databases/normalized/{base_name}"
-    normalized_holdout_dir = f"{normalized_base_dir}/holdout"
-    normalized_folds_dir = f"{normalized_base_dir}/folds"
-    normalized_folds_dir_train = f"{normalized_base_dir}/folds/train"
-    normalized_folds_dir_val = f"{normalized_base_dir}/folds/val"
-
-    os.makedirs(normalized_holdout_dir, exist_ok=True)
-    os.makedirs(normalized_folds_dir, exist_ok=True)
-    os.makedirs(normalized_folds_dir_train, exist_ok=True)
-    os.makedirs(normalized_folds_dir_val, exist_ok=True)
-
-    train_path = f"databases/splits/train_{base_name}.csv"
-    df_train = pd.read_csv(train_path)
-    df_train_scaled, global_scaler, cols_to_scale = fit_scale_df(df_train)
-    df_train_scaled.to_csv(f"{normalized_holdout_dir}/train_{base_name}_normalized.csv", index=False)
-
-    print(f" Train escalado guardado en:\n   {normalized_holdout_dir}/")
-
-    test_path = f"databases/splits/test_{base_name}.csv"
-    df_test = pd.read_csv(test_path)
-    df_test_scaled = transform_df(df_test, global_scaler, cols_to_scale)
-    df_test_scaled.to_csv(f"{normalized_holdout_dir}/test_{base_name}_normalized.csv", index=False)
-
-    print(f" Holdout escalado guardado en:\n   {normalized_holdout_dir}/")
-
-    folds_dir = f"databases/splits/folds/{base_name}"
-    for fold in range(1, 11):
-        train_fold_path = f"{folds_dir}/train_fold_{fold}_{base_name}.csv"
-        val_fold_path = f"{folds_dir}/val_fold_{fold}_{base_name}.csv"
-
-        df_train_fold = pd.read_csv(train_fold_path)
-        df_val_fold = pd.read_csv(val_fold_path)
-
-        df_train_fold_scaled, fold_scaler, cols_to_scale_fold = fit_scale_df(df_train_fold)
-        df_val_fold_scaled = transform_df(df_val_fold, fold_scaler, cols_to_scale_fold)
-
-        df_train_fold_scaled.to_csv(f"{normalized_folds_dir}/train/train_fold_{fold}_{base_name}_normalized.csv", index=False)
-        df_val_fold_scaled.to_csv(f"{normalized_folds_dir}/val/val_fold_{fold}_{base_name}_normalized.csv", index=False)
-
-        print(f" Fold {fold} escalado y guardado.")
-
-    print("\n Estandarización completa.")
 
 
 def run_for_dataset(base_name):
-    split_holdout(base_name)
-    cross_validation(base_name)
-    scale_all(base_name)
+    #split_holdout(base_name)
+    crossValidation_scall(base_name)
+
 
 
 if __name__ == "__main__":
