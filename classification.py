@@ -3,6 +3,7 @@ import re
 import json
 import pandas as pd
 import numpy as np
+
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis
 from sklearn.ensemble import GradientBoostingClassifier, ExtraTreesClassifier
 from sklearn.svm import SVC
@@ -16,7 +17,7 @@ datasets = ["bacterias"]
 selectors = ["randomforest"]
 metrics = ["ACC", "AUC", "PREC", "RECALL", "F1SCORE", "SPEC", "MCC"]
 
-# Limite de features por clasificador (None para ilimitado)
+
 FEATURE_LIMITS = {
     "svm_linear": 100,
     "svm_rbf": 100,
@@ -34,7 +35,7 @@ FEATURE_LIMITS = {
     "knn_k19": 100,
 }
 
-SAVE_INTERVAL = 10  # Guardar resultados parciales cada X features
+SAVE_INTERVAL = 10
 
 
 def compute_metrics(y_true, y_pred, y_proba=None):
@@ -44,8 +45,8 @@ def compute_metrics(y_true, y_pred, y_proba=None):
     f1 = f1_score(y_true, y_pred, zero_division=0)
     mcc = matthews_corrcoef(y_true, y_pred)
     tn, fp, fn, tp = confusion_matrix(y_true, y_pred).ravel()
-    spec = tn / (tn + fp) if (tn + fp) > 0 else 0.0
-    auc = roc_auc_score(y_true, y_proba) if y_proba is not None else None
+    spec = tn / (tn + fp) if (tn + fp) > 0 else 0.0  # Especificidad
+    auc = roc_auc_score(y_true, y_proba) if y_proba is not None else None  # AUC si hay probas
 
     return {
         "ACC": acc, "AUC": auc, "PREC": prec,
@@ -65,6 +66,7 @@ def get_classifiers():
         "ldc": lambda: LinearDiscriminantAnalysis(),
         "qdc": lambda: QuadraticDiscriminantAnalysis()
     }
+
     for k in [3, 7, 11, 15, 19]:
         classifiers[f"knn_k{k}"] = lambda k=k: KNeighborsClassifier(n_neighbors=k, weights="distance")
     return classifiers
@@ -73,16 +75,19 @@ def get_classifiers():
 for dataset in datasets:
     print(f"\nProcesando dataset: {dataset}")
 
+
     for selector in selectors:
         print(f" Selector: {selector}")
         selector_path = os.path.join("selector", selector, dataset)
         print(f"  Ruta del selector: {selector_path}")
+
 
         data_json = {
             "DATASET_NAME": dataset,
             "SELECTOR": selector,
             "DATA": []
         }
+
 
         split_files = sorted([
             os.path.join(selector_path, f)
@@ -95,14 +100,18 @@ for dataset in datasets:
             print(f"   - {f}")
 
         classifiers = get_classifiers()
+
+
         for clf_name, clf_constructor in classifiers.items():
             print(f"  Clasificador: {clf_name}")
             clf_data = {"CLASSF_NAME": clf_name, "FOLDS": []}
             max_feats = FEATURE_LIMITS.get(clf_name, None)
 
+
             for split_path in split_files:
                 split_file = os.path.basename(split_path)
                 print(f"   Procesando archivo de ranking: {split_file}")
+
 
                 match = re.search(r"fold_?(\d+)", split_file)
                 if not match:
@@ -111,8 +120,10 @@ for dataset in datasets:
                 split_id = int(match.group(1))
                 print(f"    Fold detectado: {split_id}")
 
+
                 ranking_df = pd.read_csv(split_path)
                 print(f"    Ranking cargado con {len(ranking_df)} features.")
+
 
                 base_name = f"{selector}_train_fold_{split_id}_{dataset}.csv"
                 base_name2 = f"{selector}_val_fold_{split_id}_{dataset}.csv"
@@ -125,6 +136,7 @@ for dataset in datasets:
                 print(f"    Train path: {train_path}")
                 print(f"    Test path: {test_path}")
 
+
                 try:
                     df_train = pd.read_csv(train_path)
                     df_test = pd.read_csv(test_path)
@@ -132,46 +144,55 @@ for dataset in datasets:
                     print(f"    Archivo no encontrado: {e}")
                     continue
 
+
                 target_col = next((col for col in ["HONG", "BACT", "VIRUS"] if col in df_train.columns), None)
                 if not target_col:
                     print(f"    No se encontró columna objetivo en {train_path}")
                     continue
                 print(f"    Columna objetivo detectada: {target_col}")
 
+                # Separa X e y (etiquetas y features)
                 y_train = df_train[target_col]
                 y_test = df_test[target_col]
-
                 X_train_all = df_train.drop(columns=[target_col, "id"], errors='ignore').select_dtypes(include=[np.number])
                 X_test_all = df_test.drop(columns=[target_col, "id"], errors='ignore').select_dtypes(include=[np.number])
 
                 split_data = {"SPLIT_ID": split_id, "DATA": []}
 
+                # Itera por diferentes cantidades de features (1, 2, ..., N)
                 for n in range(1, len(ranking_df) + 1):
                     if max_feats is not None and n > max_feats:
                         print(f"    Límite de features alcanzado para {clf_name}: {max_feats}")
                         break
 
+                    # Selecciona las primeras n features del ranking
                     selected_features = ranking_df["feature"].iloc[:n].values
                     last_added_feature = ranking_df["feature"].iloc[n - 1]
 
                     try:
+                        # Crea subconjuntos de datos con esas n features
                         X_train = X_train_all[selected_features]
                         X_test = X_test_all[selected_features]
 
+                        # Calcula pesos para balancear las clases si están desbalanceadas
                         sample_weights = compute_sample_weight(class_weight='balanced', y=y_train)
 
+                        # Crea nueva instancia del clasificador
                         clf = clf_constructor()
                         fit_params = {}
                         if 'sample_weight' in clf.fit.__code__.co_varnames:
                             fit_params['sample_weight'] = sample_weights
 
+                        # Entrena el modelo
                         clf.fit(X_train, y_train, **fit_params)
 
+                        # Predicciones en train y test
                         y_train_pred = clf.predict(X_train)
                         y_test_pred = clf.predict(X_test)
                         y_train_proba = clf.predict_proba(X_train)[:, 1] if hasattr(clf, "predict_proba") else None
                         y_test_proba = clf.predict_proba(X_test)[:, 1] if hasattr(clf, "predict_proba") else None
 
+                        # Calcula métricas
                         metrics_train = compute_metrics(y_train, y_train_pred, y_train_proba)
                         metrics_val = compute_metrics(y_test, y_test_pred, y_test_proba)
 

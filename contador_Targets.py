@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import csv
 
-folder_path = "databases/normalized"
+folder_path = "databases/splits"
 results_folder = os.path.join(folder_path, "results")
 os.makedirs(results_folder, exist_ok=True)  # Crear carpeta results si no existe
 
