@@ -7,8 +7,8 @@ from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.feature_selection import mutual_info_classif
 from collections import defaultdict
 
-datasets = ["virus", "bacterias", "hongos"]
-selectors = ["svmlineal", "randomforest", "mutualinfo"]
+datasets = ["bacterias2"]
+selectors = ["sinselector_importances"]
 
 
 def svm_lineal_feature_ranking(dataset_name):
@@ -74,7 +74,7 @@ def random_forest_feature_ranking(dataset_name):
             X = X.select_dtypes(include=[np.number])
 
             # Entrenamos un clasificador ExtraTrees y usamos las importancias como ranking
-            forest = ExtraTreesClassifier(n_estimators=10000, n_jobs=-1, random_state=42)
+            forest = ExtraTreesClassifier(n_estimators=10000, n_jobs=-1, random_state=42) #Preguntar Placido si aqui tambien deberia probar con otros valores
             forest.fit(X, y)
 
             importances = forest.feature_importances_
@@ -227,9 +227,9 @@ def calcular_resumen_posiciones(dataset_name):
 if __name__ == "__main__":
 
     for dataset_name in datasets:
-        svm_lineal_feature_ranking(dataset_name)
-        random_forest_feature_ranking(dataset_name)
-        mutual_info_feature_ranking(dataset_name)
+        #svm_lineal_feature_ranking(dataset_name)
+        #random_forest_feature_ranking(dataset_name)
+        #mutual_info_feature_ranking(dataset_name)
         calcular_resumen_posiciones(dataset_name)
 
 

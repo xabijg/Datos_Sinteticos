@@ -1,0 +1,94 @@
+feature,mean_pos,median_pos,std_pos
+Neutrófilos_sum,1.2,1.0,1.1661903789690602
+Sodio_sum,4.2,4.0,3.3105890714493698
+Creatinina_initial,5.0,5.0,0.0
+Leucocitos_sum,5.4,3.0,4.223742416388575
+Glucosa_sum,6.6,4.0,4.923413450036469
+Neutrófilos_iqr,8.0,8.0,4.33589667773576
+TP (s)_kurtosis,9.0,9.0,0.0
+Urea_sum,9.2,4.0,13.16662447250623
+Hemoglobina_min,9.6,7.0,6.590902821313632
+Leucocitos_iqr,10.2,7.0,7.934733769950949
+Calcio_sum,11.0,11.0,7.0
+Plaquetas_mean,11.0,11.0,0.0
+Creatinina_kurtosis,11.333333333333334,6.0,8.259674462242577
+Potasio_sum,11.4,12.0,4.454211490264018
+Hemoglobina_quartile1,12.2,15.0,5.491812087098393
+Plaquetas_min,12.333333333333334,6.0,11.897712198383164
+Linfocitos_skewness,13.0,13.0,1.0
+Creatinina_min,13.5,13.5,6.5
+TTPa (s)_quartile1,14.0,14.5,6.2048368229954285
+Potasio_iqr,14.75,15.5,5.356071321407137
+Albumina_initial,15.0,15.0,0.0
+Leucocitos_min,15.2,13.0,7.6262703859750465
+Creatinina_skewness,16.0,13.0,5.715476066494082
+GPT_skewness,16.0,16.0,0.0
+TTPa (s)_skewness,18.0,18.0,0.0
+TP (s)_sum,19.0,19.0,11.0
+Albumina_min,19.0,19.0,0.0
+Hemoglobina_kurtosis,20.0,20.0,0.0
+Edad,20.0,20.0,11.0
+TTPa (s)_iqr,21.0,21.0,6.0
+Leucocitos_mean,21.0,21.0,0.0
+GOT_kurtosis,22.0,23.0,5.354126134736337
+Hemoglobina_sum,22.333333333333332,25.0,6.018490028422596
+Hemoglobina_rms,23.5,23.5,0.5
+Neutrófilos_quartile1,24.0,24.0,0.0
+Sodio_iqr,24.0,26.0,12.206555615733702
+Albumina_kurtosis,24.0,24.0,1.0
+TTPa (s)_sum,25.0,23.0,14.7648230602334
+Calcio_std,25.0,25.0,4.0
+TP (s)_iqr,25.666666666666668,27.0,5.792715732327588
+Sodio_std,26.0,26.0,0.0
+Calcio_min,26.25,24.0,18.793283374652763
+Glucosa_iqr,26.5,26.5,7.5
+Sodio_min,26.666666666666668,21.0,9.46337971105226
+TTPa (s)_median,26.666666666666668,22.0,13.474255287605157
+Creatinina_sum,27.333333333333332,27.0,8.576453553512405
+Calcio_iqr,27.666666666666668,16.0,16.49915822768611
+Potasio_std,29.5,29.5,5.5
+LDH_skewness,29.5,29.5,12.5
+Plaquetas_quartile1,30.0,26.0,18.991226044325487
+Urea_kurtosis,31.0,31.0,0.0
+Neutrófilos_min,31.5,31.0,19.04599695474091
+Neutrófilos_std,31.5,31.5,14.5
+Plaquetas_max,31.5,31.5,22.5
+Leucocitos_std,32.0,32.0,7.0
+TP (s)_quartile1,32.5,32.5,14.5
+Calcio_initial,33.0,33.0,0.0
+Plaquetas_std,33.333333333333336,26.0,19.48218559493661
+Plaquetas_sum,34.0,34.0,20.0
+Potasio_min,34.0,34.0,0.0
+TTPa (s)_min,34.5,34.5,12.5
+Hemoglobina_median,35.0,35.0,13.0
+Linfocitos_iqr,36.0,36.0,14.0
+Albumina_std,36.0,36.0,0.0
+Linfocitos_kurtosis,37.0,37.0,0.0
+Calcio_median,37.5,37.5,24.5
+TP (s)_std,39.0,39.0,14.0
+Hemoglobina_quartile3,40.0,40.0,19.0
+GPT_kurtosis,40.0,40.0,0.0
+TTPa (s)_max,41.0,41.0,0.0
+GGT_initial,41.0,41.0,0.0
+Hemoglobina_skewness,41.0,32.0,17.146428199482248
+Calcio_quartile1,41.5,41.5,4.5
+TTPa (s)_std,42.0,42.0,0.0
+Neutrófilos_quartile3,42.5,42.5,9.5
+Albumina_skewness,43.0,43.0,0.0
+Neutrófilos_median,43.0,43.0,0.0
+Plaquetas_iqr,44.0,44.0,24.0
+TTPa (s)_mean,48.0,48.0,0.0
+Sodio_initial,49.0,49.0,0.0
+Plaquetas_kurtosis,49.0,49.0,0.0
+GOT_skewness,51.0,51.0,0.0
+Glucosa_max,53.0,53.0,0.0
+Hemoglobina_iqr,56.0,56.0,11.0
+Albumina_sum,56.0,56.0,0.0
+Glucosa_std,57.0,57.0,13.0
+Potasio_max,57.0,57.0,0.0
+Potasio_initial,60.5,60.5,10.5
+GGT_min,61.0,61.0,0.0
+Urea_skewness,63.0,63.0,0.0
+Glucosa_initial,64.0,64.0,0.0
+Hemoglobina_initial,66.0,66.0,0.0
+TP (s)_median,69.0,69.0,0.0
