@@ -7,7 +7,30 @@
     <list default="true" id="c10e19a8-e0c2-43e1-88be-b0656fd57f32" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classification.py" beforeDir="false" afterPath="$PROJECT_DIR$/classification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contador_Targets.py" beforeDir="false" afterPath="$PROJECT_DIR$/contador_Targets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classification_not_normal.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/databases/processed/bacterias2_encoded.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/databases/splits/folds/bacterias2/train_fold_1_bacterias2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/databases/splits/folds/bacterias2/train_fold_2_bacterias2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/databases/splits/folds/bacterias2/train_fold_3_bacterias2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/databases/splits/folds/bacterias2/train_fold_4_bacterias2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/databases/splits/folds/bacterias2/train_fold_5_bacterias2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/databases/splits/folds/bacterias2/val_fold_1_bacterias2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/databases/splits/folds/bacterias2/val_fold_2_bacterias2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/databases/splits/folds/bacterias2/val_fold_3_bacterias2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/databases/splits/folds/bacterias2/val_fold_4_bacterias2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/databases/splits/folds/bacterias2/val_fold_5_bacterias2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/databases/splits/results/results.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/databases/splits/results/summary.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/databases/splits/test_bacterias2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/databases/splits/train_bacterias2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/division.py" beforeDir="false" afterPath="$PROJECT_DIR$/division.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/selector/sinselector_importances/bacterias2/importance_fold_1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/selector/sinselector_importances/bacterias2/importance_fold_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/selector/sinselector_importances/bacterias2/importance_fold_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/selector/sinselector_importances/bacterias2/importance_fold_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/selector/sinselector_importances/bacterias2/importance_fold_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/selector/sinselector_importances/stats/bacterias2_resumen.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/selector_database.py" beforeDir="false" afterPath="$PROJECT_DIR$/selector_database.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +73,7 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;version__pulmon&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/xabi/Proyectos/Datos_Sinteticos/databases/splits/folds&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/xabi/Escritorio/Datos_Sinteticos&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
@@ -58,6 +81,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/databases/splits/folds" />
       <recent name="$PROJECT_DIR$/classification_results" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/classification_results/pruebaSinwrapperySmote a 10" />
     </key>
   </component>
   <component name="RunManager" selected="Python.cross_validation">

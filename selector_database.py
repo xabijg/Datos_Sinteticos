@@ -7,8 +7,8 @@ from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.feature_selection import mutual_info_classif
 from collections import defaultdict
 
-datasets = ["bacterias2"]
-selectors = ["sinselector_importances"]
+datasets = ["infeccion"]
+selectors = ["randomforest"]
 
 
 def svm_lineal_feature_ranking(dataset_name):
@@ -64,7 +64,7 @@ def random_forest_feature_ranking(dataset_name):
             output_path = os.path.join(output_dir, output_filename)
 
             df = pd.read_csv(input_path)
-            target_col = next((col for col in ["HONG", "VIRUS", "BACT"] if col in df.columns), None)
+            target_col = next((col for col in ["Infección_sino"] if col in df.columns), None)
             if target_col is None:
                 print(f" No se encontró columna objetivo para {dataset_name} en {filename}")
                 continue
@@ -228,8 +228,8 @@ if __name__ == "__main__":
 
     for dataset_name in datasets:
         #svm_lineal_feature_ranking(dataset_name)
-        #random_forest_feature_ranking(dataset_name)
+        random_forest_feature_ranking(dataset_name)
         #mutual_info_feature_ranking(dataset_name)
-        calcular_resumen_posiciones(dataset_name)
+        #calcular_resumen_posiciones(dataset_name)
 
 

@@ -3,6 +3,7 @@ import re
 import json
 import pandas as pd
 import numpy as np
+from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis
@@ -16,10 +17,9 @@ from sklearn.metrics import (
 )
 from sklearn.utils.class_weight import compute_sample_weight
 
-from imblearn.over_sampling import KMeansSMOTE
+from imblearn.over_sampling import KMeansSMOTE, BorderlineSMOTE
 
-
-datasets = ["bacterias2"]
+datasets = ["infeccion"]
 selectors = ["sinselector_importances"]
 metrics = ["ACC", "AUC", "PREC", "RECALL", "F1SCORE", "SPEC", "MCC"]
 
@@ -62,34 +62,34 @@ def compute_metrics(y_true, y_pred, y_proba=None):
 
 def get_classifiers():
      classifiers = {
-         #"svm_linear": lambda: SVC(kernel="linear", probability=True),
-         #"svm_rbf": lambda: SVC(kernel="rbf", probability=True),
-         #"svm_poly2": lambda: SVC(kernel="poly", degree=2, probability=True),
-         #"svm_poly3": lambda: SVC(kernel="poly", degree=3, probability=True),
-         #"svm_sigmoid": lambda: SVC(kernel="sigmoid", probability=True),
+         "svm_linear": lambda: SVC(kernel="linear", probability=True),
+         "svm_rbf": lambda: SVC(kernel="rbf", probability=True),
+         "svm_poly2": lambda: SVC(kernel="poly", degree=2, probability=True),
+         "svm_poly3": lambda: SVC(kernel="poly", degree=3, probability=True),
+         "svm_sigmoid": lambda: SVC(kernel="sigmoid", probability=True),
          "extratrees": lambda: ExtraTreesClassifier(
-             n_estimators=500,
-             max_depth=10,
-             min_samples_split=10,
-             min_samples_leaf=5,
-             max_features="sqrt",
-             n_jobs=-1,
-             random_state=42)
+             n_estimators=150,
+             #max_depth=10,
+             #min_samples_split=10,
+             #min_samples_leaf=5,
+             #max_features="sqrt",
+             #n_jobs=-1,
+             random_state=42),
 
-         # "gbforest": lambda: GradientBoostingClassifier(
-         #     n_estimators = 150,
-         #     learning_rate = 0.05,
-         #     max_depth = 2,
-         #     min_samples_split = 40,
-         #     min_samples_leaf = 20,
-         #     subsample = 0.7,
-         #     random_state = 42),
-         #"ldc": lambda: LinearDiscriminantAnalysis(),
-         #"qdc": lambda: QuadraticDiscriminantAnalysis()
+         "gbforest": lambda: GradientBoostingClassifier(
+             n_estimators = 150,
+             #learning_rate = 0.05,
+             #max_depth = 2,
+             #min_samples_split = 40,
+             #min_samples_leaf = 20,
+             #subsample = 0.7,
+             random_state = 42),
+         "ldc": lambda: LinearDiscriminantAnalysis(),
+         "qdc": lambda: QuadraticDiscriminantAnalysis()
      }
 
-     # for k in [3, 7, 11, 15, 19]:
-     #     classifiers[f"knn_k{k}"] = lambda k=k: KNeighborsClassifier(n_neighbors=k, weights="distance")
+     for k in [3, 7, 11, 15, 19]:
+         classifiers[f"knn_k{k}"] = lambda k=k: KNeighborsClassifier(n_neighbors=k, weights="distance")
      return classifiers
 
 
@@ -158,7 +158,7 @@ for dataset in datasets:
                     print(f"    Archivo no encontrado: {e}")
                     continue
 
-                target_col = next((col for col in ["HONG", "BACT", "VIRUS"] if col in df_train.columns), None)
+                target_col = next((col for col in ["Infección_sino"] if col in df_train.columns), None)
                 if not target_col:
                     print(f"    No se encontró columna objetivo en {train_path}")
                     continue
@@ -185,9 +185,16 @@ for dataset in datasets:
                         X_train = X_train_all_orig[selected_features].copy()
                         y_train = y_train_orig.copy()
 
-                        # Aplicar KMeans-SMOTE solo en entrenamiento
+                        # Aplicar KMeans-SMOTE solo en entrenamiento porbar otro smote
                         try:
-                            smote = KMeansSMOTE(random_state=0, n_jobs=-1)
+
+                            cluster_estimator = KMeans(n_clusters=10)
+
+                            smote = KMeansSMOTE(
+                                kmeans_estimator=cluster_estimator,
+                                random_state=0,
+                                n_jobs=-1,
+                            )
                             X_train, y_train = smote.fit_resample(X_train, y_train)
                         except Exception as smote_error:
                             print(f"    Error aplicando KMeans-SMOTE en fold {split_id}, n_feats={n}: {smote_error}")
@@ -195,12 +202,15 @@ for dataset in datasets:
 
                         X_test = X_test_all[selected_features]
 
-                        sample_weights = compute_sample_weight(class_weight='balanced', y=y_train)
+                        use_sample_weight = False  # cambiar a True si quiero usar sample
 
                         clf = clf_constructor()
                         fit_params = {}
-                        if 'sample_weight' in clf.fit.__code__.co_varnames:
-                            fit_params['sample_weight'] = sample_weights
+
+                        if use_sample_weight:
+                            sample_weights = compute_sample_weight(class_weight='balanced', y=y_train)
+                            if 'sample_weight' in clf.fit.__code__.co_varnames:
+                                fit_params['sample_weight'] = sample_weights
 
                         clf.fit(X_train, y_train, **fit_params)
 
