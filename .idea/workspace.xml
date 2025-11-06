@@ -5,32 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c10e19a8-e0c2-43e1-88be-b0656fd57f32" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/databases/processed/respiratoriovsall_encoded.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remove.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classification.py" beforeDir="false" afterPath="$PROJECT_DIR$/classification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classification_not_normal.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/databases/processed/bacterias2_encoded.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/databases/splits/folds/bacterias2/train_fold_1_bacterias2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/databases/splits/folds/bacterias2/train_fold_2_bacterias2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/databases/splits/folds/bacterias2/train_fold_3_bacterias2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/databases/splits/folds/bacterias2/train_fold_4_bacterias2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/databases/splits/folds/bacterias2/train_fold_5_bacterias2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/databases/splits/folds/bacterias2/val_fold_1_bacterias2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/databases/splits/folds/bacterias2/val_fold_2_bacterias2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/databases/splits/folds/bacterias2/val_fold_3_bacterias2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/databases/splits/folds/bacterias2/val_fold_4_bacterias2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/databases/splits/folds/bacterias2/val_fold_5_bacterias2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/databases/splits/results/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/databases/splits/results/summary.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/databases/splits/test_bacterias2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/databases/splits/train_bacterias2.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/division.py" beforeDir="false" afterPath="$PROJECT_DIR$/division.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/selector/sinselector_importances/bacterias2/importance_fold_1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/selector/sinselector_importances/bacterias2/importance_fold_2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/selector/sinselector_importances/bacterias2/importance_fold_3.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/selector/sinselector_importances/bacterias2/importance_fold_4.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/selector/sinselector_importances/bacterias2/importance_fold_5.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/selector/sinselector_importances/stats/bacterias2_resumen.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/selector_database.py" beforeDir="false" afterPath="$PROJECT_DIR$/selector_database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +45,10 @@
     &quot;Python.division.executor&quot;: &quot;Run&quot;,
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;Python.oneHot.executor&quot;: &quot;Run&quot;,
+    &quot;Python.phase3_imputer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.preprocess.executor&quot;: &quot;Run&quot;,
     &quot;Python.prueba.executor&quot;: &quot;Run&quot;,
+    &quot;Python.remove.executor&quot;: &quot;Run&quot;,
     &quot;Python.scaling.executor&quot;: &quot;Run&quot;,
     &quot;Python.selector_database.executor&quot;: &quot;Run&quot;,
     &quot;Python.split_holdout.executor&quot;: &quot;Run&quot;,
@@ -73,12 +56,13 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;version__pulmon&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/xabi/Escritorio/Datos_Sinteticos&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/xabi/Descargas/phase3_imputer.py&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/databases/processed" />
       <recent name="$PROJECT_DIR$/databases/splits/folds" />
       <recent name="$PROJECT_DIR$/classification_results" />
     </key>

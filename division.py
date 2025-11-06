@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split, StratifiedKFold
 from sklearn.preprocessing import RobustScaler
 
 
-possible_targets = ["Infección_sino"]
+possible_targets = ["respiratoria"]
 id_column = "id"
 
 # En esta funcion no hay tutia, tiene que estar bien
@@ -204,7 +204,6 @@ def crossValidation_scall(base_name):
 
         # Ahora hacemos selección de características sobre el conjunto escalado
         X_train = X_train_scaled.drop(columns=exclude_cols, errors='ignore')
-        # No olvides que exclude_cols incluye id_column y target_column, pero target ya está separado
 
         # Guardamos índice original de cada feature antes de seleccionar
         feature_indices = {feature: idx for idx, feature in enumerate(X_train.columns)}
@@ -225,7 +224,6 @@ def crossValidation_scall(base_name):
 
         print(f"Fold {fold}: {len(selected_features)} características seleccionadas")
 
-        # Entrenamos el modelo final sobre las características seleccionadas (sin aplicar selector adicional)
         X_selected = X_train[selected_features]
         model_final = ExtraTreesClassifier(n_estimators=150, random_state=42, n_jobs=-1)
         model_final.fit(X_selected, y_train)
@@ -276,7 +274,7 @@ def run_for_dataset(base_name):
 
 if __name__ == "__main__":
     datasets = [
-        "infeccion"
+        "respiratoriovsall"
     ]
 
     for ds in datasets:

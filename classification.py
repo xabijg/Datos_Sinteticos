@@ -16,10 +16,10 @@ from sklearn.metrics import (
     accuracy_score, f1_score, precision_score, recall_score, roc_auc_score, matthews_corrcoef, confusion_matrix
 )
 from sklearn.utils.class_weight import compute_sample_weight
-
+from sklearn.impute import SimpleImputer
 from imblearn.over_sampling import KMeansSMOTE, BorderlineSMOTE
 
-datasets = ["infeccion"]
+datasets = ["respiratoriovsall"]
 selectors = ["sinselector_importances"]
 metrics = ["ACC", "AUC", "PREC", "RECALL", "F1SCORE", "SPEC", "MCC"]
 
@@ -158,7 +158,7 @@ for dataset in datasets:
                     print(f"    Archivo no encontrado: {e}")
                     continue
 
-                target_col = next((col for col in ["Infección_sino"] if col in df_train.columns), None)
+                target_col = next((col for col in ["respiratoria"] if col in df_train.columns), None)
                 if not target_col:
                     print(f"    No se encontró columna objetivo en {train_path}")
                     continue
@@ -184,25 +184,28 @@ for dataset in datasets:
                         # Copias limpias para cada iteración
                         X_train = X_train_all_orig[selected_features].copy()
                         y_train = y_train_orig.copy()
-
-                        # Aplicar KMeans-SMOTE solo en entrenamiento porbar otro smote
-                        try:
-
-                            cluster_estimator = KMeans(n_clusters=10)
-
-                            smote = KMeansSMOTE(
-                                kmeans_estimator=cluster_estimator,
-                                random_state=0,
-                                n_jobs=-1,
-                            )
-                            X_train, y_train = smote.fit_resample(X_train, y_train)
-                        except Exception as smote_error:
-                            print(f"    Error aplicando KMeans-SMOTE en fold {split_id}, n_feats={n}: {smote_error}")
-                            continue
+                        # # Imputar valores faltantes
+                        # imputer = SimpleImputer(strategy="median")
+                        # X_train = imputer.fit_transform(X_train)  # imputar valores de mediana
+                        # y_train = y_train.values.ravel()
+                        # # Aplicar KMeans-SMOTE solo en entrenamiento porbar otro smote
+                        # try:
+                        #
+                        #     cluster_estimator = KMeans(n_clusters=10)
+                        #
+                        #     smote = KMeansSMOTE(
+                        #         kmeans_estimator=cluster_estimator,
+                        #         random_state=0,
+                        #         n_jobs=-1,
+                        #     )
+                        #     X_train, y_train = smote.fit_resample(X_train, y_train)
+                        # except Exception as smote_error:
+                        #     print(f"    Error aplicando KMeans-SMOTE en fold {split_id}, n_feats={n}: {smote_error}")
+                        #     continue
 
                         X_test = X_test_all[selected_features]
 
-                        use_sample_weight = False  # cambiar a True si quiero usar sample
+                        use_sample_weight = True  # cambiar a True si quiero usar sample
 
                         clf = clf_constructor()
                         fit_params = {}

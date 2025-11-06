@@ -100,9 +100,8 @@ def main(input_filename):
 
 if __name__ == "__main__":
     # main("toxicity.csv")
-    main("winequality-red.csv")
-    main("diabetes_encoded.csv")
-    main("toxicity.csv")
+
+    main("respiratoriovsall.csv")
     # main("DARWIN.csv")
     # main("DIA_trainingANDTESTset_RDKit_descriptors.csv")
     # main("gallstone.csv")
